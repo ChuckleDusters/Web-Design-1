@@ -57,13 +57,15 @@ function resize_canvas() {
 function togglepause() {
 	if(pause) {
 			pause = 0;
-			audio.play();
+            audio.play();
+            document.getElementById("button_pause").innerHTML = "&#10074;&#10074;";
 		} else {
 			pause = 1;
-			audio.pause();
+            audio.pause();
+            document.getElementById("button_pause").innerHTML = "&#x23f5;";
 		}
 }
-			
+
 function initMp3Player(source, artist, title, artwork) {
 	context.resume()
 	
