@@ -3,8 +3,7 @@ var canvas, ctx, source, context, analyser, fbc_array, rads,
 	center_x, center_y, radius, radius_old, deltarad, shockwave,
 	bars, bar_x, bar_y, bar_x_term, bar_y_term, bar_width,
 	bar_height, react_x, react_y, intensity, rot,
-	audio, pause,
-	artist, title, img_url, isSeeking;
+	audio, pause, source, artist, title, img_url, isSeeking;
 
 var client_id = "8df0d68fcc1920c92fc389b89e7ce20f";
 
@@ -68,22 +67,17 @@ function autoSelect() {
 	
 }
 			
-function initMp3Player() {
+function initMp3Player(source, artist, title, artwork) {
 	context.resume()
 	
-	audio.src = "../AUDIO/IDBeliever.mp3";
+	audio.src = source;
 	
 	pause = 0;
 	audio.play();
 	
 	document.getElementById("artistname").innerHTML = artist;
 	document.getElementById("songname").innerHTML = title;
-	document.getElementById("pagetitle").innerHTML = title;
-	document.getElementById("artwork").src = img_url;
-	
-	document.getElementById("artwork").style.opacity = 100;
-	document.getElementById("artwork").style.border = "5px solid #f174eb";
-	document.getElementById("artwork").style.padding= "1px";
+	document.getElementById("artwork").src = artwork;
 }
 			
 function frameLooper() {

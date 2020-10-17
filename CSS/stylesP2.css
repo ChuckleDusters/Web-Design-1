@@ -49,7 +49,7 @@ body{
 	margin: 0;
 	padding: 0;
 	display: block;
-
+    overflow-x: hidden;
 	font-family: "Lato", sans-serif;
 }
 
@@ -162,3 +162,29 @@ linebreak {
     height:10px;
 }
 
+#moveup {
+    position: relative;
+    bottom: 200px;
+    /*background-image: linear-gradient(to top, black, rgb(0, 10, 0), rgb(0, 20, 0), rgb(0,30,0), rgb(0, 40, 0), rgb(0, 30, 0) rgb(0, 20, 0), rgb(0, 10, 0), black);*/
+    background-color: black;
+    color:white;
+}
+
+.card {
+    background-color: rgb(0, 66, 0) !important;
+    border:2px solid white !important;
+}
+
+.list-group-item {
+    border:3px solid black !important;
+}
+.btn {
+    width: 200px !important;
+    height: 50px !important;
+    border:3px solid !important;
+    position: relative; 
+    left: 20px;
+    font-size: 26px !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    bottom: 15px;
+}
