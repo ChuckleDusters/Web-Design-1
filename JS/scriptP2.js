@@ -27,14 +27,15 @@ function initPage() {
 	ctx = canvas.getContext("2d");
 
 	//resize_canvas();
-	
-	document.getElementById("artwork").style.opacity = 0;
+    
+    document.getElementById("artwork").style.opacity = 0;
+	artwork = document.getElementById("artwork").style.opacity = 0;
 	
 	audio = new Audio();
 	audio.crossOrigin = "anonymous";
 	audio.controls = true;
 	audio.loop = false;
-	audio.autoplay = false;
+    audio.autoplay = false;
 	
 	context = new AudioContext();
 	analyser = context.createAnalyser();
@@ -61,11 +62,6 @@ function togglepause() {
 			pause = 1;
 			audio.pause();
 		}
-}
-
-function autoSelect() {
-	document.getElementById("input_URL").select();
-	
 }
 			
 function initMp3Player(source, artist, title, artwork) {
