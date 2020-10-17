@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Project 1 - Magic Square</title>
+    <script src="../JS/script.js"></script>
+</head>
+<body>
+    <div class="topnav">
+        <a href="../index.html"><i class="fa fa-home"></i> Home</a>
+        <a class="active" href="Project1.html"><i class="fa fa-folder"></i> Project 1</a>
+        <a href="Project2.html"><i class="fa fa-folder"></i> Project 2</a>
+    </div>
+    <header class="learn">
+        <br><br>
+        <h3>This page is for Project 1 - The Magic Square Project</h3>
+        <h3 id="question">[?]<span>Creates a table of numbers where each row and column is equal to the number you entered!</span></h3>
+        <br><br>
+    </header>
+    <br><br>
+    <center>
+    <p id="description">Please enter a number between 30 and 100!</p>
+    <table class="magic">
+        <tr>
+            <td><p class="standards">8</p></th>
+            <td><p class="standards">11</p></td>
+            <td><p id="var1">n+0</td>
+            <td><p class="standards">1</p></td>
+        </tr>
+        <tr>
+            <td><p id="var2">n-1</th>
+            <td><p class="standards">2</p></td>
+            <td><p class="standards">7</p></td>
+            <td><p class="standards">12</p></td>
+        </tr>
+        <tr>
+            <td><p class="standards">3</p></th>
+            <td><p id="var3">n+2</td>
+            <td><p class="standards">9</p></td>
+            <td><p class="standards">6</p></td>
+        </tr>
+        <tr>
+            <td><p class="standards">10</p></th>
+            <td><p class="standards">5</p></td>
+            <td><p class="standards">4</p></td>
+            <td><p id="var4">n+1</td>
+        </tr>
+    </table>
+    <br><br>
+
+    <input class="inputs" id="userInput" type="text" value="">
+    <button class="button" onclick="buttonClicked()">GO</button>
+    <button class="button" style="background-color: darkred" onclick="buttonClear()">CLEAR</button>
+    </center>
+</body>
+</html>
