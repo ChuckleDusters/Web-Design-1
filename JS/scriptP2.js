@@ -56,14 +56,15 @@ function resize_canvas() {
 
 function togglepause() {
 	if(pause) {
-			pause = 0;
-            audio.play();
-            document.getElementById("button_pause").innerHTML = "&#10074;&#10074;";
-		} else {
-			pause = 1;
-            audio.pause();
-            document.getElementById("button_pause").innerHTML = "&#x23f5;";
-		}
+		pause = 0;
+        audio.play();
+        document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#10074&#10074</button>';
+	} else {
+		pause = 1;
+        audio.pause();
+        document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
+    }
+    
 }
 
 function initMp3Player(source, artist, title, artwork) {
