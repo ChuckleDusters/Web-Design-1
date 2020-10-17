@@ -84,6 +84,10 @@ function initMp3Player(source, artist, title, artwork) {
 	document.getElementById("artistname").innerHTML = "Artist: " + artist;
 	document.getElementById("songname").innerHTML = "Title: " + title;
 	document.getElementById("artwork").src = artwork;
+
+	audio.onended = function() {
+		document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
+	}
 }
 			
 function frameLooper() {
@@ -177,3 +181,8 @@ function frameLooper() {
 	
 	window.requestAnimationFrame(frameLooper);
 }
+
+function popupFunction() {
+	var popup = document.getElementById("myPopup");
+	popup.classList.toggle("show");
+  }
