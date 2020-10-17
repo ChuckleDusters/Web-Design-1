@@ -51,31 +51,6 @@ function resize_canvas() {
 		canvas.height = window.innerHeight;
 }
 
-(function() {
-    var mouseTimer = null, cursorVisible = true;
-
-    function disappearCursor() {
-        mouseTimer = null;
-        document.body.style.cursor = "none";
-		document.getElementById("hideHead").style.opacity = 0;
-		document.getElementById("hideBody").style.opacity = 0;
-        cursorVisible = false;
-    }
-
-    document.onmousemove = function() {
-        if (mouseTimer) {
-            window.clearTimeout(mouseTimer);
-        }
-        if (!cursorVisible) {
-            document.body.style.cursor = "default";
-			document.getElementById("hideHead").style.opacity = 100;
-			document.getElementById("hideBody").style.opacity = 100;
-            cursorVisible = true;
-        }
-        mouseTimer = window.setTimeout(disappearCursor, 3000);
-    };
-})();
-
 function getJSON(url, callback) {
 	JSONPThing = document.createElement("script");
 	JSONPThing.type = "text/javascript";
@@ -152,7 +127,7 @@ function autoSelect() {
 function initMp3Player() {
 	context.resume()
 	
-	audio.src = inputURL;
+	audio.src = "../AUDIO/IDBeliever.mp3";
 	
 	pause = 0;
 	audio.play();

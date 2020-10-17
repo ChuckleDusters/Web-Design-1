@@ -131,14 +131,14 @@ body{
 #button_play {
 	z-index: 2;
 	position: relative;
-	bottom: 47px;
+	bottom: 446px;
 	left: 33.3%;
 }
 
 #button_pause {
 	z-index: 2;
 	position: relative;
-	bottom: 86px;
+	bottom: 386px;
 	left: 33.3%;
 }
 
