@@ -2,7 +2,7 @@
 var canvas, ctx, source, context, analyser, fbc_array, rads,
 	center_x, center_y, radius, radius_old, deltarad, shockwave,
 	bars, bar_x, bar_y, bar_x_term, bar_y_term, bar_width,
-	bar_height, react_x, react_y, intensity, rot,
+	bar_height, react_x, react_y, intensity, rot, firstPlay,
 	audio, pause, source, artist, title, img_url, isSeeking;
 
 var client_id = "8df0d68fcc1920c92fc389b89e7ce20f";
@@ -21,6 +21,7 @@ isSeeking = 0;
 artist = "Artist: None";
 title = "Not Playing - Choose a Song!"
 artwork = NULL;
+firstPlay = 0;
 
 function initPage() {
 	canvas = document.getElementById("visualizer_render");
@@ -55,16 +56,18 @@ function resize_canvas() {
 }
 
 function togglepause() {
-	if(pause) {
-		pause = 0;
-        audio.play();
-        document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#10074&#10074</button>';
-	} else {
-		pause = 1;
-        audio.pause();
-        document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
-    }
-    
+
+    if(firstPlay) {
+        if(pause) {
+		    pause = 0;
+            audio.play();
+            document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#10074&#10074</button>';
+	    } else {
+		    pause = 1;
+         audio.pause();
+         document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
+        }
+    } 
 }
 
 function initMp3Player(source, artist, title, artwork) {
@@ -72,7 +75,8 @@ function initMp3Player(source, artist, title, artwork) {
 	
 	audio.src = source;
 	
-	pause = 0;
+    pause = 0;
+    firstPlay=1;
 	audio.play();
 	
 	document.getElementById("artistname").innerHTML = "Artist: " + artist;
