@@ -91,7 +91,8 @@ function tracksJSONCallback(data) {
 
 function handleButton()
 {
-	var inputURL = document.getElementById("input_URL").value;
+    initMp3Player();
+    var inputURL = document.getElementById("input_URL").value;
 	if(inputURL.search("soundcloud.com") != -1 && inputURL.search("api.soundcloud.com") == -1) { // is it a regular old soundcloud link
 		var splitBySlash = inputURL.replace(/http:\/\/|https:\/\//gi, "").split("/"); // get rid of "http://" / "https://" in front of url and then split by slashes
 		if(splitBySlash.length == 3) { // make sure there's an actual song included at the end
