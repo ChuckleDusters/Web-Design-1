@@ -2,8 +2,8 @@
 var canvas, ctx, source, context, analyser, fbc_array, rads,
 	center_x, center_y, radius, radius_old, deltarad, shockwave,
 	bars, bar_x, bar_y, bar_x_term, bar_y_term, bar_width,
-	bar_height, react_x, react_y, intensity, rot, inputURL,
-	JSONPThing, JSONResponse, soundCloudTrackName, audio, pause,
+	bar_height, react_x, react_y, intensity, rot,
+	audio, pause,
 	artist, title, img_url, isSeeking;
 
 var client_id = "8df0d68fcc1920c92fc389b89e7ce20f";
@@ -49,65 +49,6 @@ function initPage() {
 function resize_canvas() {
 		canvas.width  = window.innerWidth;
 		canvas.height = window.innerHeight;
-}
-
-function getJSON(url, callback) {
-	JSONPThing = document.createElement("script");
-	JSONPThing.type = "text/javascript";
-	JSONPThing.src = url + "&callback=" + callback.name;
-	document.body.appendChild(JSONPThing);
-}
-
-function userJSONCallback(data) {
-	document.body.removeChild(JSONPThing); // required
-	JSONPThing = null;
-	
-	var user_id = data.id;
-	artist = data.username;
-	
-	var tracks = "https://api.soundcloud.com/users/" + user_id + "/tracks.json?client_id=" + client_id + "&limit=200";
-
-	getJSON(tracks, tracksJSONCallback); // continues in tracksJSONCallback
-}
-
-function tracksJSONCallback(data) {
-	document.body.removeChild(JSONPThing); // required
-	JSONPThing = null;
-	
-	// go through each object (track) in array (data)
-	for(var i = 0; i < data.length; i++) {
-		var track = data[i];
-		// check each track with the name (input URL)
-		if(track.permalink == soundCloudTrackName) {
-			inputURL = track.stream_url + "?client_id=" + client_id;
-			title = track.title;
-			img_url = track.artwork_url;
-			
-			initMp3Player();
-			break;
-		}
-	}
-}
-
-function handleButton()
-{
-    initMp3Player();
-    var inputURL = document.getElementById("input_URL").value;
-	if(inputURL.search("soundcloud.com") != -1 && inputURL.search("api.soundcloud.com") == -1) { // is it a regular old soundcloud link
-		var splitBySlash = inputURL.replace(/http:\/\/|https:\/\//gi, "").split("/"); // get rid of "http://" / "https://" in front of url and then split by slashes
-		if(splitBySlash.length == 3) { // make sure there's an actual song included at the end
-			var soundCloudUserURL = "http://" + splitBySlash[0] + "/" + splitBySlash[1];
-			soundCloudTrackName = splitBySlash[2];
-			var apiResovleURL = "https://api.soundcloud.com/resolve.json?url=" + soundCloudUserURL + "&client_id=" + client_id;
-			getJSON(apiResovleURL, userJSONCallback); // continues in userJSONCallback
-		}
-		else if (splitBySlash.legnth == 2) { // there's a user but no song
-			// do whatever here
-		}
-		else {
-			// do whatever here
-		}
-	}
 }
 
 function togglepause() {
