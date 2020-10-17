@@ -163,7 +163,7 @@ function frameLooper() {
 	ctx.stroke();
 				
 				
-	if (deltarad > 10) {
+	if (deltarad > 12) {
 		shockwave = 0;
 		
 		ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
