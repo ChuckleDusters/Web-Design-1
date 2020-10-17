@@ -20,6 +20,7 @@ pause = 1;
 isSeeking = 0;
 artist = "Artist: None";
 title = "Not Playing - Choose a Song!"
+artwork = NULL;
 
 function initPage() {
 	canvas = document.getElementById("visualizer_render");
@@ -75,8 +76,8 @@ function initMp3Player(source, artist, title, artwork) {
 	pause = 0;
 	audio.play();
 	
-	document.getElementById("artistname").innerHTML = artist;
-	document.getElementById("songname").innerHTML = title;
+	document.getElementById("artistname").innerHTML = "Artist: " + artist;
+	document.getElementById("songname").innerHTML = "Title: " + title;
 	document.getElementById("artwork").src = artwork;
 }
 			
@@ -138,7 +139,7 @@ function frameLooper() {
 	radius =  25 + (intensity * 0.002);
 	deltarad = radius - radius_old;
 				
-	ctx.fillStyle = "rgb(255, 255, 255)";
+	ctx.fillStyle = artwork;
 	ctx.beginPath();
 	ctx.arc(center_x, center_y, radius + 2, 0, Math.PI * 2, false);
 	ctx.fill();
