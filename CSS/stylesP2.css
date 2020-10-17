@@ -4,6 +4,7 @@
     background-color: darkgreen;
     color: white;
     border:2px solid black;
+    text-align: center !important;
 
 }
 #question{
@@ -48,14 +49,14 @@ body{
 	margin: 0;
 	padding: 0;
 	display: block;
-	
+
 	font-family: "Lato", sans-serif;
 }
 
 .button {
-    background-color: #6600ff;
+    background-color: white;
     border: none;
-    color: white;
+    color: black;
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
@@ -65,28 +66,10 @@ body{
     cursor: pointer;
 }
 
-.textbox { 
-    background: white; 
-    border: 1px solid #6600ff; 
-    border-radius: 5px; 
-    box-shadow: 0 0 5px 3px #6600ff; 
-    color: #666; 
-    outline: none; 
-    height:23px; 
-    width: 275px; 
-}
-
 #title {
 	color: white;	
 	position: absolute;
 	bottom: -10px;
-	left: 10px;
-}
-
-#instruction {
-	color: white;
-	position: absolute;
-	bottom: 55px;
 	left: 10px;
 }
 
@@ -96,17 +79,10 @@ body{
 	left: 0%;
 }
 
-#soundcloud {
-	position: absolute;
-	bottom: 40px;
-	left: 320px;
-	z-index: 2;
-}
-
 #artisttitle {
 	color: white;
 	position: absolute;
-	top: 40px;
+	top: 240px;
 	left: 170px;
 	font-size: 50%;
 }
@@ -114,56 +90,29 @@ body{
 #songtitle {
 	color: white;
 	position: absolute;
-	top: 0px;
+	top: 200px;
 	left: 170px;
 	font-size: 70%;
-}
-
-#URLbox {
-	z-index: 2;
-	position: absolute;
-	bottom: 45px; 
-	left: 10px; 
-	width: 300px;
 }
 
 #button_play {
 	z-index: 2;
 	position: relative;
-	bottom: 446px;
+	bottom: 146px;
 	left: 33.3%;
 }
 
 #button_pause {
 	z-index: 2;
 	position: relative;
-	bottom: 386px;
+	bottom: 188px;
 	left: 33.3%;
-}
-
-#homelink {
-	position: absolute;
-	bottom: 40px;
-	right: 20px;
-	
-	color: rgb(255, 255, 255);
-	opacity: 0.5;
-}
-
-#credit {
-	position: absolute;
-	bottom: 0px;
-	right: 20px;
-	z-index: 3;
-	
-	color: rgb(255, 255, 255);
-	opacity: 0.5;
 }
 
 #scrubber {
 	z-index: 2;
 	position: relative;
-	bottom: 110px;
+	bottom: 220px;
 	left: 33.3vw;
 }
 
@@ -174,7 +123,7 @@ input[type=range]{
 input[type=range]::-webkit-slider-runnable-track {
     width: 300px;
     height: 10px;
-    background: #ddd;
+    background: darkgrey;
     border: none;
     border-radius: 3px;
 }
@@ -185,7 +134,7 @@ input[type=range]::-webkit-slider-thumb {
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: #6600ff;
+    background: white;
     margin-top: -4px;
 }
 
@@ -194,17 +143,22 @@ input[type=range]:focus {
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #ccc;
+    background: grey;
 }
 
 #audioCurrentTime {
 	color: white;
 	position: relative;
-	bottom: 147px;
-	left: 66.6%;
+	bottom: 257px;
+	left: 67%;
 	font-size: 70%;
 }
 
-.link {
-	color: rgb(255, 255, 255);
+linebreak {
+    color: black;
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    height:10px;
 }
+

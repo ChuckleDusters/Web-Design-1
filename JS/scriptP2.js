@@ -19,6 +19,8 @@ rot = 0;
 intensity = 0;
 pause = 1;
 isSeeking = 0;
+artist = "Artist: None";
+title = "Not Playing - Choose a Song!"
 
 function initPage() {
 	canvas = document.getElementById("visualizer_render");
@@ -48,7 +50,7 @@ function initPage() {
 
 function resize_canvas() {
 		canvas.width  = window.innerWidth;
-		canvas.height = window.innerHeight;
+		canvas.height = window.innerHeight/1.3;
 }
 
 function togglepause() {
@@ -88,8 +90,8 @@ function frameLooper() {
 	resize_canvas(); // for some reason i have to resize the canvas every update or else the framerate decreases over time
 				
 	var grd = ctx.createLinearGradient(0, 0, 0, canvas.height);
-	grd.addColorStop(0, "rgba(0, 184, 0, 1)");
-	grd.addColorStop(1, "rgba(0, 84, 0, 1)");
+	grd.addColorStop(0, "rgba(0, 150, 0, 1)");
+	grd.addColorStop(1, "rgba(0, 0, 0, 1)");
 
 	ctx.fillStyle = grd;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
