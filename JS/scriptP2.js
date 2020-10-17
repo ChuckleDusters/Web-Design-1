@@ -135,7 +135,7 @@ function frameLooper() {
 	radius =  25 + (intensity * 0.002);
 	deltarad = radius - radius_old;
 				
-	ctx.fillStyle = artwork;
+	ctx.fillStyle = "rgb(255, 255, 255)";
 	ctx.beginPath();
 	ctx.arc(center_x, center_y, radius + 2, 0, Math.PI * 2, false);
 	ctx.fill();
