@@ -73,12 +73,14 @@ function togglepause() {
 function initMp3Player(source, artist, title, artwork) {
 	context.resume()
 	
+	
 	audio.src = source;
 	
     pause = 0;
     firstPlay=1;
 	audio.play();
 	
+	document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#10074&#10074</button>';
 	document.getElementById("artistname").innerHTML = "Artist: " + artist;
 	document.getElementById("songname").innerHTML = "Title: " + title;
 	document.getElementById("artwork").src = artwork;
