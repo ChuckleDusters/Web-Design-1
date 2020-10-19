@@ -85,8 +85,14 @@ function initMp3Player(source, artist, title, albumArt) {
 	artwork.src = albumArt;
 
 	audio.onended = function() {
-		document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
+		if(document.getElementById("replay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+			document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
+		}
+		else {
+			initMp3Player(source, artist, title, albumArt);
+		}
 	}
+
 }
 
 function frameLooper() {
@@ -194,3 +200,19 @@ window.onkeydown = function(e) {
 	togglepause();
     return !(e.keyCode == 32);
 };
+
+function colorToggle() {
+	current = document.getElementById("replay_styling").style.backgroundColor;
+	console.log(document.getElementById("replay_styling").style.borderColor);
+	if(current == "rgb(255, 255, 255)") {
+		document.getElementById("replay_styling").style.backgroundColor = "rgb(80, 80, 80)";
+		document.getElementById("replay_styling").style.color = current;
+		document.getElementById("replay_styling").style.borderColor = current;
+	}
+	if(current == "rgb(80, 80, 80)") {
+		document.getElementById("replay_styling").style.backgroundColor = "rgb(255, 255, 255)";
+		document.getElementById("replay_styling").style.color = "rgb(0, 0, 0)";
+		document.getElementById("replay_styling").style.borderColor = "rgb(0, 0, 0)";
+	}
+
+}

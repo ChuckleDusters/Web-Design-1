@@ -18,7 +18,8 @@ body{
 
 .button {
     background-color: white;
-    border: none;
+    border:2px solid black;
+    border-radius: 8px;
     color: black;
     padding: 5px 10px;
     text-align: center;
@@ -52,17 +53,17 @@ body{
 	font-size: 70%;
 }
 
-#button_play {
+#button_replay {
 	z-index: 2;
 	position: relative;
-	bottom: 146px;
-	left: 33.3%;
+	bottom: 311px;
+    left: 67%;
 }
 
 #button_pause {
 	z-index: 2;
 	position: relative;
-	bottom: 188px;
+	bottom: 185px;
 	left: 33.3%;
 }
 
@@ -203,3 +204,14 @@ linebreak {
   from {opacity: 0;}
   to {opacity:1 ;}
 }
+
+/* Hide scrollbars */
+.scrollDisable::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollDisable {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
