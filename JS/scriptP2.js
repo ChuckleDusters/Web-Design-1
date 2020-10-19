@@ -85,7 +85,7 @@ function initMp3Player(source, artist, title, albumArt) {
 	artwork.src = albumArt;
 
 	audio.onended = function() {
-		if(document.getElementById("replay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+		if(document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 			document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
 		}
 		else {
