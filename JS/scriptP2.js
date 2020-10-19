@@ -147,16 +147,20 @@ function frameLooper() {
 	radius =  25 + (intensity * 0.002);
 	deltarad = radius - radius_old;
 				
-	ctx.fillStyle = ctx.createPattern(artwork, 'repeat');
-	ctx.beginPath();
-	ctx.arc(center_x, center_y, radius + 2, 0, Math.PI * 2, false);
-	ctx.fill();
+	
+	//ctx.fillStyle = ctx.createPattern(artwork, 'repeat');
+	//ctx.beginPath();
+	//ctx.arc(center_x, center_y, radius + 2, 0, Math.PI * 2, false);
+	//ctx.fill();
 	ctx.strokeStyle = "rgb(255, 255, 255)";
 	ctx.lineWidth = 5;
 	ctx.beginPath();
 	ctx.arc(center_x, center_y, radius + 2, 0, Math.PI * 2, false);
 	ctx.stroke();
-	
+	ctx.clip();
+	ctx.drawImage(artwork, center_x - artwork.width, center_y - artwork.height);
+
+
 	// shockwave effect			
 	shockwave += 60;
 				
@@ -191,8 +195,7 @@ function popupFunction() {
 	popup.classList.toggle("show");
   }
 
-  document.body.onkeyup = function(e){
-    if(e.keyCode == 32){
-        togglepause();
-    }
-}
+window.onkeydown = function(e) { 
+	togglepause();
+    return !(e.keyCode == 32);
+};
