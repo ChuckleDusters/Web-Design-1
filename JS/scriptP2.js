@@ -89,6 +89,7 @@ function initMp3Player(source, artist, title, albumArt) {
 			document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
 		}
 		else {
+			document.getElementById("time").innerHTML = "0:00";
 			initMp3Player(source, artist, title, albumArt);
 		}
 	}
@@ -203,7 +204,6 @@ window.onkeydown = function(e) {
 
 function colorToggle() {
 	current = document.getElementById("replay_styling").style.backgroundColor;
-	console.log(document.getElementById("replay_styling").style.borderColor);
 	if(current == "rgb(255, 255, 255)") {
 		document.getElementById("replay_styling").style.backgroundColor = "rgb(80, 80, 80)";
 		document.getElementById("replay_styling").style.color = current;
