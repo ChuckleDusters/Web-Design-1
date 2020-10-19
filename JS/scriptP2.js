@@ -147,11 +147,6 @@ function frameLooper() {
 	radius =  25 + (intensity * 0.002);
 	deltarad = radius - radius_old;
 				
-	
-	//ctx.fillStyle = ctx.createPattern(artwork, 'repeat');
-	//ctx.beginPath();
-	//ctx.arc(center_x, center_y, radius + 2, 0, Math.PI * 2, false);
-	//ctx.fill();
 	ctx.strokeStyle = "rgb(255, 255, 255)";
 	ctx.lineWidth = 5;
 	ctx.beginPath();
@@ -159,7 +154,7 @@ function frameLooper() {
 	ctx.stroke();
 	ctx.clip();
 	ctx.drawImage(artwork, center_x - artwork.width, center_y - artwork.height);
-
+	ctx.restore();
 
 	// shockwave effect			
 	shockwave += 60;
