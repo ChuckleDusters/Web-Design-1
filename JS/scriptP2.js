@@ -69,7 +69,7 @@ function togglepause() {
     } 
 }
 
-function initMp3Player(source, artist, title, artwork) {
+function initMp3Player(source, artist, title, albumArt) {
 	context.resume()
 	
 	
@@ -82,13 +82,13 @@ function initMp3Player(source, artist, title, artwork) {
 	document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#10074&#10074</button>';
 	document.getElementById("artistname").innerHTML = "Artist: " + artist;
 	document.getElementById("songname").innerHTML = "Title: " + title;
-	artwork = document.getElementById("artwork");
+	artwork.src = albumArt;
 
 	audio.onended = function() {
 		document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
 	}
 }
-			
+
 function frameLooper() {
 	resize_canvas(); // for some reason i have to resize the canvas every update or else the framerate decreases over time
 			
