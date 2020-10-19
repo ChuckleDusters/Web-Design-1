@@ -154,7 +154,7 @@ function frameLooper() {
 	ctx.strokeStyle = "rgb(255, 255, 255)";
 	ctx.lineWidth = 5;
 	ctx.beginPath();
-	ctx.arc(center_x, center_y, radius + 4, 0, Math.PI * 4, false);
+	ctx.arc(center_x, center_y, radius + 2, 0, Math.PI * 2, false);
 	ctx.stroke();
 	
 	// shockwave effect			
