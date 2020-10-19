@@ -3,7 +3,7 @@ var canvas, ctx, source, context, analyser, fbc_array, rads,
 	center_x, center_y, radius, radius_old, deltarad, shockwave,
 	bars, bar_x, bar_y, bar_x_term, bar_y_term, bar_width,
 	bar_height, react_x, react_y, intensity, rot, firstPlay,
-	audio, pause, source, artist, title, img_url, isSeeking;
+	audio, pause, source, artist, title, img_url, isSeeking, artwork;
 
 var client_id = "8df0d68fcc1920c92fc389b89e7ce20f";
 
@@ -20,7 +20,6 @@ pause = 1;
 isSeeking = 0;
 artist = "Artist: None";
 title = "Not Playing - Choose a Song!"
-artwork = NULL;
 firstPlay = 0;
 
 function initPage() {
@@ -30,13 +29,13 @@ function initPage() {
 	//resize_canvas();
     
     document.getElementById("artwork").style.opacity = 0;
-	artwork = document.getElementById("artwork").style.opacity = 0;
+	artwork = document.getElementById("artwork");
 	
 	audio = new Audio();
 	audio.crossOrigin = "anonymous";
 	audio.controls = true;
 	audio.loop = false;
-    audio.autoplay = false;
+	audio.autoplay = false;
 	
 	context = new AudioContext();
 	analyser = context.createAnalyser();
@@ -83,7 +82,7 @@ function initMp3Player(source, artist, title, artwork) {
 	document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#10074&#10074</button>';
 	document.getElementById("artistname").innerHTML = "Artist: " + artist;
 	document.getElementById("songname").innerHTML = "Title: " + title;
-	document.getElementById("artwork").src = artwork;
+	//artwork = document.getElementById("artwork");
 
 	audio.onended = function() {
 		document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
@@ -92,7 +91,7 @@ function initMp3Player(source, artist, title, artwork) {
 			
 function frameLooper() {
 	resize_canvas(); // for some reason i have to resize the canvas every update or else the framerate decreases over time
-				
+			
 	var grd = ctx.createLinearGradient(0, 0, 0, canvas.height);
 	grd.addColorStop(0, "rgba(0, 150, 0, 1)");
 	grd.addColorStop(1, "rgba(0, 0, 0, 1)");
@@ -148,10 +147,15 @@ function frameLooper() {
 	radius =  25 + (intensity * 0.002);
 	deltarad = radius - radius_old;
 				
-	ctx.fillStyle = "rgb(255, 255, 255)";
+	ctx.fillStyle = ctx.createPattern(artwork, 'repeat');
 	ctx.beginPath();
 	ctx.arc(center_x, center_y, radius + 2, 0, Math.PI * 2, false);
 	ctx.fill();
+	ctx.strokeStyle = "rgb(255, 255, 255)";
+	ctx.lineWidth = 5;
+	ctx.beginPath();
+	ctx.arc(center_x, center_y, radius + 4, 0, Math.PI * 4, false);
+	ctx.stroke();
 	
 	// shockwave effect			
 	shockwave += 60;
@@ -186,3 +190,9 @@ function popupFunction() {
 	var popup = document.getElementById("myPopup");
 	popup.classList.toggle("show");
   }
+
+  document.body.onkeyup = function(e){
+    if(e.keyCode == 32){
+        togglepause();
+    }
+}
