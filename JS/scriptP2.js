@@ -127,7 +127,7 @@ function autoplay() {
 			shuffleVar = 0;
 		}
 		songArray = unshufflePlaylist(songArray);
-		initMp3Player(0);
+		initMp3Player(songArray[0]);
 		audio.onended = function() {
 			audioLooper(songArray[1]);
 		}
@@ -157,7 +157,7 @@ function shuffle() {
 		if (document.getElementById("autoplay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 			colorToggle("autoplay_styling");
 			songArray = shufflePlaylist(songArray);
-			initMp3Player(0);
+			initMp3Player(songArray[0]);
 			audio.onended = function() {
 				audioLooper(songArray[1]);
 			}
