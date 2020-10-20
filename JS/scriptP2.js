@@ -165,6 +165,7 @@ function shuffle() {
 	}
 	if (document.getElementById("shuffle_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 		songArray = unshufflePlaylist(songArray);
+		console.log("Song Array has been unshuffled on shuffle unselect");
 	}
 }
 
