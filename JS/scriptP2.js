@@ -175,8 +175,15 @@ function audioLooper(counter) {
 			audioLooper(counter);
 		}
 	}
-	else if (counter == numSongs + 1) {
+	else if (counter == numSongs + 1 && autoplayVar && !shuffleVar) {
 		audioLooper(0);
+	}
+	else if(counter == numSongs + 1 && autoplayer && shuffleVar) {
+		songArray = shufflePlaylist(songArray);
+		initMp3Player(0)
+		audio.onended = function() {
+			audioLooper(songArray[1]);
+		}
 	}
 }
 
