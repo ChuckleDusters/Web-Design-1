@@ -196,8 +196,14 @@ function initMp3Player(input) {
 	
     pause = 0;
     firstPlay=1;
-	audio.play();
-	
+	try {
+		audio.play();
+	}
+	catch(err) {
+		replaySong();
+		replaySong();
+		alert("Sorry, something went wrong! Please try again.");
+	}
 	document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#10074&#10074</button>';
 	document.getElementById("artistname").innerHTML = "Artist: " + songs[input].artist;
 	document.getElementById("songname").innerHTML = "Title: " + songs[input].title;
@@ -215,7 +221,6 @@ function initMp3Player(input) {
 			}
 		}
 	}
-
 }
 
 function frameLooper() {
