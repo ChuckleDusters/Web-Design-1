@@ -3,7 +3,8 @@ var canvas, ctx, source, context, analyser, fbc_array, rads,
 	center_x, center_y, radius, radius_old, deltarad, shockwave,
 	bars, bar_x, bar_y, bar_x_term, bar_y_term, bar_width,
 	bar_height, react_x, react_y, intensity, rot, firstPlay,
-	audio, pause, source, artist, title, isSeeking, artwork;
+	audio, pause, source, artist, title, isSeeking, artwork,
+	autoplayVar, shuffleVar;
 
 const numSongs = 5;
 var songArray = new Array(numSongs);
@@ -64,6 +65,8 @@ isSeeking = 0;
 artist = "Artist: None";
 title = "Not Playing - Choose a Song!"
 firstPlay = 0;
+autoplayVar = 0;
+shuffleVar = 0;
 
 function initPage() {
 	canvas = document.getElementById("visualizer_render");
@@ -113,19 +116,22 @@ function togglepause() {
 
 function autoplay() {
 	colorToggle("autoplay_styling");
+	autoplayVar = 0;
 	if (document.getElementById("replay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("replay_styling");
 	}
 	if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)") { 
+		autoplayVar = 1;
 		if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 			colorToggle("shuffle_styling");
+			shuffleVar = 0;
 		}
 		songArray = unshufflePlaylist(songArray);
 		console.log("Playing Song at: " + songArray[0])
 		initMp3Player(songArray[0])
 		for(var i = 1; i <= numSongs; i++)
 		{
-			audio.onended = function() {
+			audio.onended = function(i) {
 				console.log("Playing Song at: " + songArray[i])
 				initMp3Player(songArray[i])
 			}
@@ -137,18 +143,22 @@ function replaySong() {
 	colorToggle("replay_styling");
 	if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("autoplay_styling");
+		autoplayVar = 0;
 	}
 	if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("shuffle_styling");
+		shuffleVar = 0;
 	}
 }
 
 function shuffle() {
 	colorToggle("shuffle_styling");
+	shuffleVar = 0;
 	if (document.getElementById("replay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("replay_styling");
 	}
 	if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+		shuffleVar = 1;
 		if (document.getElementById("autoplay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 			colorToggle("autoplay_styling");
 			songArray = shufflePlaylist(songArray);
@@ -182,14 +192,16 @@ function initMp3Player(input) {
 	document.getElementById("songname").innerHTML = "Title: " + songs[input].title;
 	artwork.src = songs[input].art;
 
-	audio.onended = function() {
-		if(document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
-		
-			document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
-		
-		} else {
-			document.getElementById("time").innerHTML = "0:00";
-			initMp3Player(input);
+	console.log("shuffleVar = " + shuffleVar);
+	console.log("autoplayVar = " + autoplayVar);
+	if (!autoplayVar && !shuffleVar) {
+		audio.onended = function() {
+			if(document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
+				document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
+			} else {
+				document.getElementById("time").innerHTML = "0:00";
+				initMp3Player(input);
+			}
 		}
 	}
 
