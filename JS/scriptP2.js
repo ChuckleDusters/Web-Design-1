@@ -182,7 +182,7 @@ function audioLooper(counter) {
 	else if (counter > numSongs && autoplayVar && !shuffleVar) {
 		audioLooper(songArray[0]);
 	}
-	else if(counter > numSongs && !autoplayer && shuffleVar) {
+	else if(counter > numSongs && !autoplayVar && shuffleVar) {
 		songArray = shufflePlaylist(songArray);
 		initMp3Player(songArray[0]);
 		audio.onended = function() {
