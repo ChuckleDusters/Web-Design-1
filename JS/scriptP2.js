@@ -172,7 +172,7 @@ function audioLooper(counter) {
 		initMp3Player(songArray[counter]);
 		audio.onended = function() {
 			counter++;
-			audioLooper(counter);
+			audioLooper(songArray[counter]);
 		}
 	}
 	else if (counter == numSongs + 1 && autoplayVar && !shuffleVar) {
