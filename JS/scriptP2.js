@@ -191,19 +191,21 @@ function initMp3Player(input) {
 	console.log("Song #: " + input + " received!");
 	
 	context.resume()
-
-	audio.src = songs[input].source;
 	
-    pause = 0;
-    firstPlay=1;
 	try {
-		audio.play();
+		audio.src = songs[input].source;
 	}
 	catch(err) {
 		replaySong();
 		replaySong();
 		alert("Sorry, something went wrong! Please try again.");
 	}
+
+    pause = 0;
+    firstPlay=1;
+	
+	audio.play();
+	
 	document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#10074&#10074</button>';
 	document.getElementById("artistname").innerHTML = "Artist: " + songs[input].artist;
 	document.getElementById("songname").innerHTML = "Title: " + songs[input].title;
