@@ -175,6 +175,9 @@ function audioLooper(counter) {
 			audioLooper(counter);
 		}
 	}
+	else if (counter == numSongs + 1) {
+		audioLooper(0);
+	}
 }
 
 function initMp3Player(input) {
