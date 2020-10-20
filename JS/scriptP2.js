@@ -65,8 +65,8 @@ isSeeking = 0;
 artist = "Artist: None";
 title = "Not Playing - Choose a Song!"
 firstPlay = 0;
-autoplayVar = 0;
-shuffleVar = 0;
+autoplayVar = false;
+shuffleVar = false;
 
 function initPage() {
 	canvas = document.getElementById("visualizer_render");
@@ -116,15 +116,15 @@ function togglepause() {
 
 function autoplay() {
 	colorToggle("autoplay_styling");
-	autoplayVar = 0;
+	autoplayVar = false;
 	if (document.getElementById("replay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("replay_styling");
 	}
 	if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)") { 
-		autoplayVar = 1;
+		autoplayVar = true;
 		if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 			colorToggle("shuffle_styling");
-			shuffleVar = 0;
+			shuffleVar = false;
 		}
 		songArray = unshufflePlaylist(songArray);
 		initMp3Player(songArray[0]);
@@ -138,22 +138,22 @@ function replaySong() {
 	colorToggle("replay_styling");
 	if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("autoplay_styling");
-		autoplayVar = 0;
+		autoplayVar = false;
 	}
 	if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("shuffle_styling");
-		shuffleVar = 0;
+		shuffleVar = false;
 	}
 }
 
 function shuffle() {
 	colorToggle("shuffle_styling");
-	shuffleVar = 0;
+	shuffleVar = false;
 	if (document.getElementById("replay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("replay_styling");
 	}
 	if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
-		shuffleVar = 1;
+		shuffleVar = true;
 		if (document.getElementById("autoplay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 			colorToggle("autoplay_styling");
 			songArray = shufflePlaylist(songArray);
@@ -180,13 +180,13 @@ function audioLooper(counter) {
 		}
 	}
 	else if (counter > numSongs && autoplayVar && !shuffleVar) {
-		audioLooper(sonArray[0]);
+		audioLooper(songArray[0]);
 	}
 	else if(counter > numSongs && !autoplayer && shuffleVar) {
 		songArray = shufflePlaylist(songArray);
 		initMp3Player(songArray[0]);
 		audio.onended = function() {
-			audioLooper(songArray[1]);
+			audioLooper(songArray[0]);
 		}
 	}
 }
@@ -211,12 +211,12 @@ function initMp3Player(input) {
 		artwork.src = null;
 		console.log(shuffleVar + " " + autoplayVar + " " + firstPlay);
 		if (firstPlay == 1) {
-			autoplayVar = 0;
-			shuffleVar = 0;
+			autoplayVar = false;
+			shuffleVar = false;
 			shuffle();
 		} else {
-			autoplayVar = 0;
-			shuffleVar = 0;
+			autoplayVar = false;
+			shuffleVar = false;
 			alert("Sorry, something went wrong! Please try again.");
 		}
 	}
@@ -233,7 +233,7 @@ function initMp3Player(input) {
 
 	console.log("shuffleVar = " + shuffleVar);
 	console.log("autoplayVar = " + autoplayVar);
-	if (!autoplayVar && !shuffleVar) {
+	if (!Boolean(autoplayVar) && !Boolean(shuffleVar)) {
 		audio.onended = function() {
 			if(document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 				document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#x23f5</button>';
