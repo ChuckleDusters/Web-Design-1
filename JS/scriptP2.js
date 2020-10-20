@@ -5,9 +5,10 @@ var canvas, ctx, source, context, analyser, fbc_array, rads,
 	bar_height, react_x, react_y, intensity, rot, firstPlay,
 	audio, pause, source, artist, title, isSeeking, artwork;
 
+const numSongs = 5;
+var songArray = new Array(numSongs);
 
-
-//Create multiple objects...
+// Create song objects within an array
 let songs = [
 	song1 = {
 		title:"Believer", 
@@ -28,7 +29,7 @@ let songs = [
 		art:'../IMAGES/5FDPBadCompany.jpg'
 	},
 	song4 = {
-		title:"Bluer on Black", 
+		title:"Blue on Black", 
 		artist:"Five Finger Death Punch", 
 		source:'../AUDIO/5FDPBlueOnBlack.mp3', 
 		art:'../IMAGES/5FDPBlueOnBlack.jpg'
@@ -63,8 +64,6 @@ isSeeking = 0;
 artist = "Artist: None";
 title = "Not Playing - Choose a Song!"
 firstPlay = 0;
-
-
 
 function initPage() {
 	canvas = document.getElementById("visualizer_render");
@@ -112,9 +111,45 @@ function togglepause() {
     } 
 }
 
-function Autoplay() {
-	if(document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
-		
+function autoplay() {
+	colorToggle("autoplay_styling");
+	if (document.getElementById("replay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+		colorToggle("replay_styling");
+	}
+	if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)" && document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+		colorToggle("shuffle_styling");
+	}
+	songArray = unshufflePlaylist(songArray);
+	for(var i = 0; i > songArray.length; i++)
+	{
+		initMp3Player(songArray[i])
+	}
+}
+
+function replaySong() {
+	colorToggle("replay_styling");
+	if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+		colorToggle("autoplay_styling");
+	}
+	if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+		colorToggle("shuffle_styling");
+	}
+}
+
+function shuffle() {
+	colorToggle("shuffle_styling");
+	if (document.getElementById("replay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+		colorToggle("replay_styling");
+	}
+	if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+		if (document.getElementById("autoplay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
+			colorToggle("autoplay_styling");
+		}
+	songArray = shufflePlaylist(songArray);
+	for(var i = 0; i > songArray.length; i++)
+	{
+		initMp3Player(songArray[i])
+	}
 	}
 }
 
@@ -134,9 +169,10 @@ function initMp3Player(input) {
 
 	audio.onended = function() {
 		if(document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
+		
 			document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
-		}
-		else {
+		
+		} else {
 			document.getElementById("time").innerHTML = "0:00";
 			initMp3Player(input);
 		}
@@ -252,18 +288,38 @@ window.onkeydown = function(e) {
     return !(e.keyCode == 32);
 };
 
-function colorToggle() {
-	current = document.getElementById("replay_styling").style.backgroundColor;
+function colorToggle(input) {
+	current = document.getElementById(input).style.backgroundColor;
 	if(current == "rgb(255, 255, 255)") {
-		document.getElementById("replay_styling").style.backgroundColor = "rgb(80, 80, 80)";
-		document.getElementById("replay_styling").style.color = current;
-		document.getElementById("replay_styling").style.borderColor = current;
+		document.getElementById(input).style.backgroundColor = "rgb(80, 80, 80)";
+		document.getElementById(input).style.color = current;
+		document.getElementById(input).style.borderColor = current;
 	}
 	if(current == "rgb(80, 80, 80)") {
-		document.getElementById("replay_styling").style.backgroundColor = "rgb(255, 255, 255)";
-		document.getElementById("replay_styling").style.color = "rgb(0, 0, 0)";
-		document.getElementById("replay_styling").style.borderColor = "rgb(0, 0, 0)";
+		document.getElementById(input).style.backgroundColor = "rgb(255, 255, 255)";
+		document.getElementById(input).style.color = "rgb(0, 0, 0)";
+		document.getElementById(input).style.borderColor = "rgb(0, 0, 0)";
 	}
 
 }
 
+function shufflePlaylist(array) {
+	var counter = array.length;
+	while (counter > 0) {
+		let index = Math.floor(Math.random() * counter);
+		counter--;
+
+		let temp = array[counter];
+		array[counter] = array[index];
+		array[index] = temp;
+	}
+	return array;
+}
+
+function unshufflePlaylist(array) {
+	
+	for(var counter = 0; counter < array.length; counter++) {
+		array[counter] = counter;
+	}
+	return array;
+}

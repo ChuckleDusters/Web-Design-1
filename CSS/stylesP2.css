@@ -67,6 +67,14 @@ body{
 	left: 33.3%;
 }
 
+#shuffle_autoplay {
+	z-index: 2;
+	position: relative;
+	bottom: 310px;
+    width: 213px;
+    margin: 0 auto;
+}
+
 #scrubber {
 	z-index: 2;
 	position: relative;
