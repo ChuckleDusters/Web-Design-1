@@ -171,8 +171,8 @@ function audioLooper(counter) {
 		console.log("Playing Song at: " + songArray[0]);
 		initMp3Player(counter);
 		audio.onended = function() {
-			audioLooper(counter);
 			counter++;
+			audioLooper(counter);
 		}
 	}
 }
