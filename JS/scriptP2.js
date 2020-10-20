@@ -3,9 +3,26 @@ var canvas, ctx, source, context, analyser, fbc_array, rads,
 	center_x, center_y, radius, radius_old, deltarad, shockwave,
 	bars, bar_x, bar_y, bar_x_term, bar_y_term, bar_width,
 	bar_height, react_x, react_y, intensity, rot, firstPlay,
-	audio, pause, source, artist, title, img_url, isSeeking, artwork;
+	audio, pause, source, artist, title, isSeeking, artwork;
 
-var client_id = "8df0d68fcc1920c92fc389b89e7ce20f";
+
+
+//Create multiple objects...
+let songs = [
+	song1 = {
+		title:"Believer", 
+		artist:"Imagine Dragons", 
+		source:'../AUDIO/IDBeliever.mp3', 
+		art:'../IMAGES/IDBeliever.jpg'
+	}, 
+	song2 = {
+		title:"Soothsayer", 
+		artist:"Buckethead", 
+		source:'../AUDIO/BSoothsayer.mp3', 
+		art:'../IMAGES/BSoothsayer.jpg'
+	}
+]
+
 
 // give vars an initial real value to validate
 bars = 200;
@@ -22,15 +39,16 @@ artist = "Artist: None";
 title = "Not Playing - Choose a Song!"
 firstPlay = 0;
 
+
+
 function initPage() {
 	canvas = document.getElementById("visualizer_render");
 	ctx = canvas.getContext("2d");
 
 	//resize_canvas();
-    
-    document.getElementById("artwork").style.opacity = 0;
+	document.getElementById("artwork").style.opacity = 0;
 	artwork = document.getElementById("artwork");
-	
+
 	audio = new Audio();
 	audio.crossOrigin = "anonymous";
 	audio.controls = true;
@@ -69,20 +87,25 @@ function togglepause() {
     } 
 }
 
-function initMp3Player(source, artist, title, albumArt) {
+function Autoplay() {
+	if(document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+		
+	}
+}
+
+function initMp3Player(input) {
 	context.resume()
-	
-	
-	audio.src = source;
+
+	audio.src = songs[input].source;
 	
     pause = 0;
     firstPlay=1;
 	audio.play();
 	
 	document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#10074&#10074</button>';
-	document.getElementById("artistname").innerHTML = "Artist: " + artist;
-	document.getElementById("songname").innerHTML = "Title: " + title;
-	artwork.src = albumArt;
+	document.getElementById("artistname").innerHTML = "Artist: " + songs[input].artist;
+	document.getElementById("songname").innerHTML = "Title: " + songs[input].title;
+	artwork.src = songs[input].art;
 
 	audio.onended = function() {
 		if(document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
@@ -90,7 +113,7 @@ function initMp3Player(source, artist, title, albumArt) {
 		}
 		else {
 			document.getElementById("time").innerHTML = "0:00";
-			initMp3Player(source, artist, title, albumArt);
+			initMp3Player(input);
 		}
 	}
 
@@ -198,7 +221,9 @@ function popupFunction() {
   }
 
 window.onkeydown = function(e) { 
-	togglepause();
+	if(e.keyCode == 32) {
+		togglepause();
+	}
     return !(e.keyCode == 32);
 };
 
@@ -216,3 +241,4 @@ function colorToggle() {
 	}
 
 }
+
