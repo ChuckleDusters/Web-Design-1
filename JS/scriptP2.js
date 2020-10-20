@@ -156,7 +156,7 @@ function shuffle() {
 			initMp3Player(songArray[0])
 			for(var i = 1; i <= numSongs; i++)
 			{
-				audio.onended = function(){
+				audio.onended = function(i){
 					console.log("Playing Song at: " + songArray[i])
 					initMp3Player(songArray[i])
 				}
