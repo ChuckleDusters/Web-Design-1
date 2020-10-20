@@ -170,8 +170,10 @@ function audioLooper(counter) {
 	if(counter <= numSongs) {
 		console.log("Playing Song at: " + songArray[0]);
 		initMp3Player(counter);
-		counter++;
-		audioLooper(counter);
+		audio.onended = function() {
+			audioLooper(counter);
+			counter++;
+		}
 	}
 }
 
