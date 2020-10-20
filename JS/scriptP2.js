@@ -163,6 +163,9 @@ function shuffle() {
 			}
 		}
 	}
+	if (document.getElementById("shuffle_styling").style.backgroundColor == "rgb(255, 255, 255)") {
+		songArray = unshufflePlaylist(songArray);
+	}
 }
 
 function audioLooper(counter) {
