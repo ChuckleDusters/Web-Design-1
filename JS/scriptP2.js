@@ -128,7 +128,9 @@ function autoplay() {
 		}
 		songArray = unshufflePlaylist(songArray);
 		initMp3Player(0);
-		audio.onended = audioLooper(songArray[1]);
+		audio.onended = function() {
+			audioLooper(songArray[1]);
+		}
 	}
 }
 
@@ -156,7 +158,21 @@ function shuffle() {
 			colorToggle("autoplay_styling");
 			songArray = shufflePlaylist(songArray);
 			initMp3Player(0);
-			audio.onended = audioLooper(songArray[1]);
+			audio.onended = function() {
+				audioLooper(songArray[1]);
+			}
+		}
+	}
+}
+
+function audioLooper(counter) {
+	console.log("Called audioLooper at counter = " + counter);
+	if(counter <= numSongs) {
+		audio.onended = function() {
+			console.log("Playing Song at: " + songArray[0]);
+			initMp3Player(counter);
+			counter++;
+			audioLooper(counter);
 		}
 	}
 }
@@ -190,16 +206,6 @@ function initMp3Player(input) {
 		}
 	}
 
-}
-function audioLooper(counter) {
-	if(counter <= numSongs) {
-		audio.onended = function() {
-			console.log("Playing Song at: " + songArray[0]);
-			initMp3Player(counter);
-			counter++;
-			audioLooper(counter);
-		}
-	}
 }
 
 function frameLooper() {
