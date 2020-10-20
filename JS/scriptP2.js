@@ -121,10 +121,10 @@ function autoplay() {
 			colorToggle("shuffle_styling");
 		}
 		songArray = unshufflePlaylist(songArray);
-		for(var i = 0; i > songArray.length; i++)
+		for(var i = 0; i <= numSongs; i++)
 		{
-			initMp3Player(songArray[i])
 			console.log("Playing Song at: " + songArray[i])
+			initMp3Player(songArray[i])
 		}
 	}
 }
@@ -148,16 +148,19 @@ function shuffle() {
 		if (document.getElementById("autoplay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 			colorToggle("autoplay_styling");
 			songArray = shufflePlaylist(songArray);
-			for(var i = 0; i > songArray.length; i++)
+			for(var i = 0; i <= numSongs; i++)
 			{
+				console.log("Playing Song at: " + songArray[i])
 				initMp3Player(songArray[i])
 			}
-			console.log("Playing Song at: " + songArray[i])
+			
 		}
 	}
 }
 
 function initMp3Player(input) {
+	console.log("Song #: " + input + " received!");
+	
 	context.resume()
 
 	audio.src = songs[input].source;
@@ -321,8 +324,8 @@ function shufflePlaylist(array) {
 }
 
 function unshufflePlaylist(array) {
-	
-	for(var counter = 0; counter < array.length; counter++) {
+	var counter;
+	for(counter = 0; counter <= numSongs; counter++) {
 		array[counter] = counter;
 	}
 	return array;
