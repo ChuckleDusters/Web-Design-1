@@ -176,7 +176,7 @@ function audioLooper(counter) {
 		audio.onended = function() {
 			counter++;
 			console.log("Counter + 1 = " + counter);
-			audioLooper(songArray[counter]);
+			audioLooper(counter);
 		}
 	}
 	else if (counter > numSongs && autoplayVar && !shuffleVar) {
