@@ -191,7 +191,7 @@ function initMp3Player(input) {
     firstPlay=1;
 	audio.play();
 	
-	document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#10074&#10074</button>';
+	document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#10074&#10074</button>';
 	document.getElementById("artistname").innerHTML = "Artist: " + songs[input].artist;
 	document.getElementById("songname").innerHTML = "Title: " + songs[input].title;
 	artwork.src = songs[input].art;
@@ -201,7 +201,7 @@ function initMp3Player(input) {
 	if (!autoplayVar && !shuffleVar) {
 		audio.onended = function() {
 			if(document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
-				document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
+				document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#x23f5</button>';
 			} else {
 				document.getElementById("time").innerHTML = "0:00";
 				initMp3Player(input);
