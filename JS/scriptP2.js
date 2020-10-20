@@ -20,7 +20,32 @@ let songs = [
 		artist:"Buckethead", 
 		source:'../AUDIO/BSoothsayer.mp3', 
 		art:'../IMAGES/BSoothsayer.jpg'
+	},
+	song3 = {
+		title:"Bad Company", 
+		artist:"Five Finger Death Punch", 
+		source:'../AUDIO/5FDPBadCompany.mp3', 
+		art:'../IMAGES/5FDPBadCompany.jpg'
+	},
+	song4 = {
+		title:"Bluer on Black", 
+		artist:"Five Finger Death Punch", 
+		source:'../AUDIO/5FDPBlueOnBlack.mp3', 
+		art:'../IMAGES/5FDPBlueOnBlack.jpg'
+	},
+	song5 = {
+		title:"Wrong Side of Heaven", 
+		artist:"Five Finger Death Punch", 
+		source:'../AUDIO/5FDPWrongSideOfHeaven.mp3', 
+		art:'../IMAGES/5FDPWrongSideOfHeaven.jpg'
+	},
+	song6 = {
+		title:"Sound of Silence", 
+		artist:"Disturbed", 
+		source:'../AUDIO/DSoundOfSilence.mp3', 
+		art:'../IMAGES/DSoundOfSilence.jpg'
 	}
+
 ]
 
 
