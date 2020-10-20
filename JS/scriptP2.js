@@ -125,7 +125,7 @@ function autoplay() {
 		{
 			console.log("Playing Song at: " + songArray[i])
 			initMp3Player(songArray[i])
-			wait(songs[songArray[i]].duration);
+			setTimeout(console.log("Song over"), (songs[songArray[i]].duration));
 		}
 	}
 }
@@ -153,7 +153,7 @@ function shuffle() {
 			{
 				console.log("Playing Song at: " + songArray[i])
 				initMp3Player(songArray[i])
-				wait(songs[songArray[i]].duration);
+				setTimeout(console.log("Song over"), (songs[songArray[i]].duration));
 			}
 			
 		}
