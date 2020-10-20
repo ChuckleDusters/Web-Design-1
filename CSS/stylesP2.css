@@ -130,8 +130,7 @@ linebreak {
 
 #moveup {
     position: relative;
-    bottom: 200px;
-    /*background-image: linear-gradient(to top, black, rgb(0, 10, 0), rgb(0, 20, 0), rgb(0,30,0), rgb(0, 40, 0), rgb(0, 30, 0) rgb(0, 20, 0), rgb(0, 10, 0), black);*/
+    bottom: 340px;
     background-color: black;
     color:white;
 }

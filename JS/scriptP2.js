@@ -102,11 +102,11 @@ function togglepause() {
         if(pause) {
 		    pause = 0;
             audio.play();
-            document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#10074&#10074</button>';
+            document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#10074&#10074</button>';
 	    } else {
 		    pause = 1;
          audio.pause();
-         document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
+         document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#x23f5</button>';
         }
     } 
 }
@@ -116,13 +116,16 @@ function autoplay() {
 	if (document.getElementById("replay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("replay_styling");
 	}
-	if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)" && document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
-		colorToggle("shuffle_styling");
-	}
-	songArray = unshufflePlaylist(songArray);
-	for(var i = 0; i > songArray.length; i++)
-	{
-		initMp3Player(songArray[i])
+	if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)") { 
+		if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+			colorToggle("shuffle_styling");
+		}
+		songArray = unshufflePlaylist(songArray);
+		for(var i = 0; i > songArray.length; i++)
+		{
+			initMp3Player(songArray[i])
+			console.log("Playing Song at: " + songArray[i])
+		}
 	}
 }
 
@@ -144,12 +147,13 @@ function shuffle() {
 	if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		if (document.getElementById("autoplay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 			colorToggle("autoplay_styling");
+			songArray = shufflePlaylist(songArray);
+			for(var i = 0; i > songArray.length; i++)
+			{
+				initMp3Player(songArray[i])
+			}
+			console.log("Playing Song at: " + songArray[i])
 		}
-	songArray = shufflePlaylist(songArray);
-	for(var i = 0; i > songArray.length; i++)
-	{
-		initMp3Player(songArray[i])
-	}
 	}
 }
 
