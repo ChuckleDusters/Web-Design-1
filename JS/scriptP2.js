@@ -168,7 +168,7 @@ function shuffle() {
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
 	if(counter <= numSongs) {
-		console.log("Playing Song at: " + songArray[0]);
+		console.log("Playing Song at: " + songArray[counter]);
 		initMp3Player(songArray[counter]);
 		audio.onended = function() {
 			counter++;
