@@ -178,10 +178,10 @@ function audioLooper(counter) {
 			audioLooper(songArray[counter]);
 		}
 	}
-	else if (counter == numSongs + 1 && autoplayVar && !shuffleVar) {
+	else if (counter > numSongs && autoplayVar && !shuffleVar) {
 		audioLooper(0);
 	}
-	else if(counter == numSongs + 1 && !autoplayer && shuffleVar) {
+	else if(counter > numSongs && !autoplayer && shuffleVar) {
 		songArray = shufflePlaylist(songArray);
 		initMp3Player(songArray[0]);
 		audio.onended = function() {
@@ -247,15 +247,15 @@ function initMp3Player(input) {
 function frameLooper() {
 	resize_canvas(); // for some reason i have to resize the canvas every update or else the framerate decreases over time
 			
-	var grd = ctx.createLinearGradient(0, 0, 0, canvas.height);
-	grd.addColorStop(0, "rgba(0, 150, 0, 1)");
-	grd.addColorStop(1, "rgba(0, 0, 0, 1)");
+	//var grd = ctx.createLinearGradient(0, 0, 0, canvas.height);
+	//grd.addColorStop(0, "rgba(0, 150, 0, 1)");
+	//grd.addColorStop(1, "rgba(0, 0, 0, 1)");
 
-	ctx.fillStyle = grd;
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	//ctx.fillStyle = grd;
+	//ctx.fillRect(0, 0, canvas.width, canvas.height);
 	
-	ctx.fillStyle = "rgba(255, 255, 255, " + (intensity * 0.0000125 - 0.4) + ")";
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	//ctx.fillStyle = "rgba(255, 255, 255, " + (intensity * 0.0000125 - 0.4) + ")";
+	//ctx.fillRect(0, 0, canvas.width, canvas.height);
 		
 	rot = rot + intensity * 0.0000001;
 		
