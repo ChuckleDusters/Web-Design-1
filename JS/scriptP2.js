@@ -198,7 +198,23 @@ function initMp3Player(input) {
 	catch(err) {
 		replaySong();
 		replaySong();
-		alert("Sorry, something went wrong! Please try again.");
+		autoplay();
+		autoplay();
+		audio.pause();
+		document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;"&#x23f5</button>';
+		document.getElementById("artistname").innerHTML = "Artist: None";
+		document.getElementById("songname").innerHTML = "Not Playing - Choose a Song!";
+		artwork.src = null;
+		console.log(shuffleVar + " " + autoplayVar + " " + firstPlay);
+		if (firstPlay == 1) {
+			autoplayVar = 0;
+			shuffleVar = 0;
+			shuffle();
+		} else {
+			autoplayVar = 0;
+			shuffleVar = 0;
+			alert("Sorry, something went wrong! Please try again.");
+		}
 	}
 
     pause = 0;
