@@ -199,8 +199,6 @@ function audioLooper(counter) {
 			counter++;
 			audioLooper(counter);
 		}
-	} else {
-		break;
 	}
 }
 
