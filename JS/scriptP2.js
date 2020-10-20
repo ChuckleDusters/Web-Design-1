@@ -64,6 +64,7 @@ isSeeking = 0;
 artist = "Artist: None";
 title = "Not Playing - Choose a Song!"
 firstPlay = 0;
+songOver = true;
 
 function initPage() {
 	canvas = document.getElementById("visualizer_render");
@@ -123,9 +124,10 @@ function autoplay() {
 		songArray = unshufflePlaylist(songArray);
 		for(var i = 0; i <= numSongs; i++)
 		{
-			console.log("Playing Song at: " + songArray[i])
-			initMp3Player(songArray[i])
-			setTimeout(console.log("Song over"), (songs[songArray[i]].duration));
+			if (songOver == true) {
+				console.log("Playing Song at: " + songArray[i])
+				initMp3Player(songArray[i])
+			}
 		}
 	}
 }
@@ -151,9 +153,10 @@ function shuffle() {
 			songArray = shufflePlaylist(songArray);
 			for(var i = 0; i <= numSongs; i++)
 			{
-				console.log("Playing Song at: " + songArray[i])
-				initMp3Player(songArray[i])
-				setTimeout(console.log("Song over"), (songs[songArray[i]].duration));
+				if (songOver == true) {
+					console.log("Playing Song at: " + songArray[i])
+					initMp3Player(songArray[i])
+				}
 			}
 			
 		}
@@ -170,6 +173,7 @@ function initMp3Player(input) {
     pause = 0;
     firstPlay=1;
 	audio.play();
+	songOver = false;
 	
 	document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#10074&#10074</button>';
 	document.getElementById("artistname").innerHTML = "Artist: " + songs[input].artist;
@@ -177,6 +181,7 @@ function initMp3Player(input) {
 	artwork.src = songs[input].art;
 
 	audio.onended = function() {
+		songOver = true;
 		if(document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 		
 			document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 40px;">&#x23f5</button>';
