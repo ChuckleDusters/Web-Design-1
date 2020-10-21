@@ -394,7 +394,7 @@ function shufflePlaylist(array) {
 function unshufflePlaylist(array) {
 	var counter;
 	for(counter = 0; counter <= numSongs; counter++) {
-		array[counter] = counter + 1;
+		array[counter] = counter;
 	}
 	return array;
 }
