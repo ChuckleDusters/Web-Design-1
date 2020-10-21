@@ -129,7 +129,7 @@ function autoplay() {
 		songArray = unshufflePlaylist(songArray);
 		initMp3Player(songArray[0]);
 		audio.onended = function() {
-			audioLooper(songArray[0]);
+			audioLooper(songArray[1]);
 		}
 	}
 }
@@ -178,7 +178,6 @@ function audioLooper(counter) {
 		console.log("Counter set to songArray[counter]: " + counter);
 		songArray = unshufflePlaylist(songArray);
 		console.log("songArray unshuffle processed successfully!");
-		counter++;
 	}
 	if(counter <= numSongs) {
 		console.log("Playing Song at: " + songArray[counter]);
