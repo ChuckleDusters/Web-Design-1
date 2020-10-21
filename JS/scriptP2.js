@@ -172,7 +172,7 @@ function shuffle() {
 
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
-	if (shuffleVar == false && autoplayVar == true) {
+	if (!Boolean(shuffleVar) && Boolean(autoplayVar)) {
 		counter = songArray[counter];
 		console.log("Counter set to songArray[counter]: " + counter);
 	}
