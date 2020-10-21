@@ -162,7 +162,7 @@ function shuffle() {
 		songArray = shufflePlaylist(songArray);
 			initMp3Player(songArray[0]);
 			audio.onended = function() {
-				if (shufflevar == true) {
+				if (shuffleVar == true) {
 					audioLooper(1); //Old = songArray[1];
 				} else {
 					audioLooper(0);
