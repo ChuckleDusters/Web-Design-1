@@ -172,6 +172,9 @@ function shuffle() {
 
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
+	if (shuffleVar == false && autoplayVar == true) {
+		counter = songArray[counter];
+	}
 	if(counter <= numSongs) {
 		console.log("Playing Song at: " + songArray[counter]);
 		initMp3Player(songArray[counter]);
@@ -324,7 +327,7 @@ function frameLooper() {
 	ctx.stroke();
 				
 				
-	if (deltarad > 12) {
+	if (deltarad > 15) {
 		shockwave = 0;
 		
 		ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
