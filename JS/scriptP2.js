@@ -376,7 +376,7 @@ function colorToggle(input) {
 
 function shufflePlaylist(array) {
 	var counter = array.length;
-	while (counter >= 0) {
+	while (counter > 0) {
 		let index = Math.floor(Math.random() * counter);
 		counter--;
 
