@@ -170,7 +170,7 @@ function shuffle() {
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
 	if (shuffleVar == false) {
-		counter = songArray[counter];
+		counter = songArray[counter - 1];
 		console.log("Counter set to songArray[counter]: " + counter);
 		songArray = unshufflePlaylist(songArray);
 		console.log("songArray unshuffle processed successfully!");
