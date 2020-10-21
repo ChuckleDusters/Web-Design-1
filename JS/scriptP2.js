@@ -174,6 +174,7 @@ function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
 	if (shuffleVar == false && autoplayVar == true) {
 		counter = songArray[counter];
+		console.log("Counter set to songArray[counter]: " + counter);
 	}
 	if(counter <= numSongs) {
 		console.log("Playing Song at: " + songArray[counter]);
