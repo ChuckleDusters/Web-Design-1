@@ -154,6 +154,7 @@ function shuffle() {
 	}
 	if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		shuffleVar = true;
+		autoplayVar = true;
 		if (document.getElementById("autoplay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 			colorToggle("autoplay_styling");
 			
@@ -164,10 +165,6 @@ function shuffle() {
 				audioLooper(1); //Old = songArray[1];
 			}
 	}
-	if (document.getElementById("shuffle_styling").style.backgroundColor == "rgb(255, 255, 255)") {
-		songArray = unshufflePlaylist(songArray);
-		console.log("Song Array has been unshuffled on shuffle unselect");
-	}
 }
 
 function audioLooper(counter) {
@@ -175,6 +172,8 @@ function audioLooper(counter) {
 	if (shuffleVar == false) {
 		counter = songArray[counter];
 		console.log("Counter set to songArray[counter]: " + counter);
+		songArray = unshufflePlaylist(songArray);
+		console.log("songArray unshuffle processed successfully!");
 	}
 	if(counter <= numSongs) {
 		console.log("Playing Song at: " + songArray[counter]);
@@ -185,10 +184,10 @@ function audioLooper(counter) {
 			audioLooper(counter);
 		}
 	}
-	else if (counter > numSongs && autoplayVar && !shuffleVar) {
+	else if (counter > numSongs && autoplayVar == true && shuffleVar == false) {
 		audioLooper(songArray[0]);
 	}
-	else if(counter > numSongs && !autoplayVar && shuffleVar) {
+	else if(counter > numSongs && shuffleVar == true) {
 		songArray = shufflePlaylist(songArray);
 		initMp3Player(songArray[0]);
 		audio.onended = function() {
