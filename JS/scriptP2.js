@@ -129,7 +129,7 @@ function autoplay() {
 		songArray = unshufflePlaylist(songArray);
 		initMp3Player(songArray[0]);
 		audio.onended = function() {
-			audioLooper(songArray[1]);
+			audioLooper(songArray[0]);
 		}
 	}
 }
