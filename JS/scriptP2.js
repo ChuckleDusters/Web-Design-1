@@ -173,7 +173,7 @@ function shuffle() {
 
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
-	if (shuffleVar > 2 && counter <= numSongs) {
+	if (shuffleVar < 2 && counter <= numSongs) {
 		counter = songArray[counter];
 		console.log("Counter set to songArray[counter]: " + counter);
 		songArray = unshufflePlaylist(songArray);
@@ -188,7 +188,7 @@ function audioLooper(counter) {
 			audioLooper(counter);
 		}
 	}
-	else if (counter > numSongs && autoplayVar == true && shuffleVar > 2) {
+	else if (counter > numSongs && autoplayVar == true && shuffleVar < 2) {
 		console.log("Autoplay replay hit")
 		counter = 0;
 		audioLooper(counter);
