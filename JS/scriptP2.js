@@ -136,13 +136,13 @@ function autoplay() {
 
 function replaySong() {
 	colorToggle("replay_styling");
+	autoplayVar = false;
+	shuffleVar = false;
 	if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("autoplay_styling");
-		autoplayVar = false;
 	}
 	if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("shuffle_styling");
-		shuffleVar = false;
 	}
 }
 
@@ -161,7 +161,7 @@ function shuffle() {
 		songArray = shufflePlaylist(songArray);
 			initMp3Player(songArray[0]);
 			audio.onended = function() {
-				audioLooper(songArray[1]);
+				audioLooper(1); //Old = songArray[1];
 			}
 	}
 	if (document.getElementById("shuffle_styling").style.backgroundColor == "rgb(255, 255, 255)") {
