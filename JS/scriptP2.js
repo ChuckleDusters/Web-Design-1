@@ -189,7 +189,7 @@ function audioLooper(counter) {
 		}
 	}
 	else if (counter > numSongs && autoplayVar == true && shuffleVar == false) {
-		audioLooper(songArray[0]);
+		audioLooper(0);
 	}
 	else if(counter > numSongs && shuffleVar == true) {
 		songArray = shufflePlaylist(songArray);
