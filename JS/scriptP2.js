@@ -162,7 +162,11 @@ function shuffle() {
 		songArray = shufflePlaylist(songArray);
 			initMp3Player(songArray[0]);
 			audio.onended = function() {
-				audioLooper(1); //Old = songArray[1];
+				if (shufflevar == true) {
+					audioLooper(1); //Old = songArray[1];
+				} else {
+					audioLooper(0);
+				}
 			}
 	}
 }
@@ -170,7 +174,7 @@ function shuffle() {
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
 	if (shuffleVar == false) {
-		counter = songArray[counter - 1];
+		counter = songArray[counter];
 		console.log("Counter set to songArray[counter]: " + counter);
 		songArray = unshufflePlaylist(songArray);
 		console.log("songArray unshuffle processed successfully!");
