@@ -189,7 +189,9 @@ function audioLooper(counter) {
 		}
 	}
 	else if (counter > numSongs && autoplayVar == true && shuffleVar == false) {
-		audioLooper(0);
+		console.log("Autoplay replay hit")
+		counter = 0;
+		audioLooper(counter);
 	}
 	else if(counter > numSongs && shuffleVar == true) {
 		songArray = shufflePlaylist(songArray);
