@@ -172,7 +172,7 @@ function shuffle() {
 
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
-	if (!Boolean(shuffleVar) && Boolean(autoplayVar)) {
+	if (Boolean(shuffleVar) == false && Boolean(autoplayVar) == true) {
 		counter = songArray[counter];
 		console.log("Counter set to songArray[counter]: " + counter);
 	}
@@ -239,7 +239,7 @@ function initMp3Player(input) {
 
 	console.log("shuffleVar = " + shuffleVar);
 	console.log("autoplayVar = " + autoplayVar);
-	if (!Boolean(autoplayVar) && !Boolean(shuffleVar)) {
+	if (Boolean(autoplayVar) == false && Boolean(shuffleVar) == false) {
 		audio.onended = function() {
 			if(document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 				document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#x23f5</button>';
