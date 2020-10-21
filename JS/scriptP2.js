@@ -156,12 +156,13 @@ function shuffle() {
 		shuffleVar = true;
 		if (document.getElementById("autoplay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 			colorToggle("autoplay_styling");
-			songArray = shufflePlaylist(songArray);
+			
+		}
+		songArray = shufflePlaylist(songArray);
 			initMp3Player(songArray[0]);
 			audio.onended = function() {
 				audioLooper(songArray[1]);
 			}
-		}
 	}
 	if (document.getElementById("shuffle_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 		songArray = unshufflePlaylist(songArray);
