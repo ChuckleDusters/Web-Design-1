@@ -148,7 +148,7 @@ function replaySong() {
 
 function shuffle() {
 	colorToggle("shuffle_styling");
-	if (shuffleVar == 2 && document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+	if (shuffleVar == 0 && document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		shuffleVar = 1;
 	} else {
 		shuffleVar = 0;
