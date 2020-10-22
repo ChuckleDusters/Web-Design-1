@@ -184,7 +184,7 @@ function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
 	if ((shuffleVar != 0 || autoplayVar != false) || (shuffleVar != 0 && autoplayVar != 0)) {
 		if (shuffleVar < 2 && counter <= numSongs) {
-			if(shuffleVar != 1) {
+			if (shuffleVar != 1) {
 				counter = songArray[counter];
 				console.log("Counter set to songArray[counter]: " + counter);
 			} else {
@@ -195,19 +195,20 @@ function audioLooper(counter) {
 			console.log("songArray unshuffle processed successfully!");
 		}
 		if (counter <= numSongs) {
-			console.log("Playing Song at: " + songArray[counter]);
-			initMp3Player(songArray[counter]);
-			audio.onended = function() {
-				if (autoplayVar != false) {
+			if (autoplayVar != false) {
+				console.log("Playing Song at: " + songArray[counter]);
+				initMp3Player(songArray[counter]);
+				audio.onended = function() {
 					counter++;
 					console.log("Counter + 1 = " + counter);
 					audioLooper(counter);
-				} else {
-					document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#x23f5</button>';
-					document.getElementById("artistname").innerHTML = "Artist: None";
-					document.getElementById("songname").innerHTML = "Not Playing - Choose a Song!";
 				}
+			} else {
+				document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#x23f5</button>';
+				document.getElementById("artistname").innerHTML = "Artist: None";
+				document.getElementById("songname").innerHTML = "Not Playing - Choose a Song!";
 			}
+			
 		}
 		else if (counter > numSongs && autoplayVar == true && shuffleVar < 2) {
 			console.log("Autoplay replay hit")
