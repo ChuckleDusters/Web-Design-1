@@ -255,7 +255,7 @@ function initMp3Player(input) {
     pause = 0;
     firstPlay=1;
 	
-	nowPlaying = songs[input];
+	nowPlaying = songs[input].source;
 	audio.play();
 	
 	document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#10074&#10074</button>';
