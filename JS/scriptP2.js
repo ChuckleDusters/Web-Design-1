@@ -216,7 +216,7 @@ function audioLooper(counter) {
 			}
 		}
 	} else {
-		document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;"&#x23f5</button>';
+		document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#x23f5</button>';
 		document.getElementById("artistname").innerHTML = "Artist: None";
 		document.getElementById("songname").innerHTML = "Not Playing - Choose a Song!";
 	}
@@ -236,7 +236,7 @@ function initMp3Player(input) {
 		autoplay();
 		autoplay();
 		audio.pause();
-		document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;"&#x23f5</button>';
+		document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#x23f5</button>';
 		document.getElementById("artistname").innerHTML = "Artist: None";
 		document.getElementById("songname").innerHTML = "Not Playing - Choose a Song!";
 		artwork.src = null;
