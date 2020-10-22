@@ -175,7 +175,7 @@ function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
 	if (shuffleVar != 0 || autoplayVar != false) {
 		if (shuffleVar < 2 && counter <= numSongs) {
-			if(shuffleVar != 1) {
+			if(shuffleVar != 1 && document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 				counter = songArray[counter];
 				console.log("Counter set to songArray[counter]: " + counter);
 			} else {
@@ -206,6 +206,10 @@ function audioLooper(counter) {
 				audioLooper(songArray[0]);
 			}
 		}
+	} else {
+		document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;"&#x23f5</button>';
+		document.getElementById("artistname").innerHTML = "Artist: None";
+		document.getElementById("songname").innerHTML = "Not Playing - Choose a Song!";
 	}
 }
 
