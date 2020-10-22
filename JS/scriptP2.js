@@ -124,7 +124,7 @@ function autoplay() {
 		autoplayVar = true;
 		if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 			colorToggle("shuffle_styling");
-			shuffleVar = false;
+			shuffleVar = 0;
 		}
 		songArray = unshufflePlaylist(songArray);
 		initMp3Player(songArray[0]);
@@ -137,7 +137,7 @@ function autoplay() {
 function replaySong() {
 	colorToggle("replay_styling");
 	autoplayVar = false;
-	shuffleVar = false;
+	shuffleVar = 0;
 	if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("autoplay_styling");
 	}
