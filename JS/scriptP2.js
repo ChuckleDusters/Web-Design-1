@@ -174,8 +174,11 @@ function shuffle() {
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
 	if (shuffleVar != 0 || autoplayVar != false) {
+		if (shuffleVar == 2 && document.getElementById("shuffle_styling").style.backgroundColor == "rgb(255, 255, 255)") {
+			shuffleVar = 1;
+		}
 		if (shuffleVar < 2 && counter <= numSongs) {
-			if(shuffleVar != 1 && document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+			if(shuffleVar != 1) {
 				counter = songArray[counter];
 				console.log("Counter set to songArray[counter]: " + counter);
 			} else {
