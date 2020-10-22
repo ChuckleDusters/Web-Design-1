@@ -194,13 +194,19 @@ function audioLooper(counter) {
 			songArray = unshufflePlaylist(songArray);
 			console.log("songArray unshuffle processed successfully!");
 		}
-		if(counter <= numSongs) {
+		if (counter <= numSongs) {
 			console.log("Playing Song at: " + songArray[counter]);
 			initMp3Player(songArray[counter]);
 			audio.onended = function() {
-				counter++;
-				console.log("Counter + 1 = " + counter);
-				audioLooper(counter);
+				if (autoplayVar != false) {
+					counter++;
+					console.log("Counter + 1 = " + counter);
+					audioLooper(counter);
+				} else {
+					document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#x23f5</button>';
+					document.getElementById("artistname").innerHTML = "Artist: None";
+					document.getElementById("songname").innerHTML = "Not Playing - Choose a Song!";
+				}
 			}
 		}
 		else if (counter > numSongs && autoplayVar == true && shuffleVar < 2) {
@@ -208,7 +214,7 @@ function audioLooper(counter) {
 			counter = 0;
 			audioLooper(counter);
 		}
-		else if(counter > numSongs && shuffleVar == 2) {
+		else if (counter > numSongs && shuffleVar == 2) {
 			songArray = shufflePlaylist(songArray);
 			initMp3Player(songArray[0]);
 			audio.onended = function() {
