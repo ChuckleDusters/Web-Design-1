@@ -148,11 +148,7 @@ function replaySong() {
 
 function shuffle() {
 	colorToggle("shuffle_styling");
-	if (shuffleVar == 0 && document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
-		shuffleVar = 1;
-	} else {
 		shuffleVar = 0;
-	}
 	if (document.getElementById("replay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("replay_styling");
 	}
@@ -174,6 +170,9 @@ function shuffle() {
 				audioLooper(songArray[0]);
 			}	
 		}
+	} else {
+		shuffleVar = 1;
+		audioLooper(songArray[0]);
 	}
 }
 
@@ -181,9 +180,6 @@ function shuffle() {
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
 	if ((shuffleVar != 0 || autoplayVar != false) || (shuffleVar != 0 && autoplayVar != 0)) {
-		if (shuffleVar == 2 && document.getElementById("shuffle_styling").style.backgroundColor == "rgb(255, 255, 255)") {
-			shuffleVar = 1;
-		}
 		if (shuffleVar < 2 && counter <= numSongs) {
 			if(shuffleVar != 1) {
 				counter = songArray[counter];
