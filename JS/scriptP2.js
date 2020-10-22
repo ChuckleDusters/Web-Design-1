@@ -177,6 +177,7 @@ function shuffle() {
 	}
 }
 
+
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
 	if ((shuffleVar != 0 || autoplayVar != false) || (shuffleVar != 0 && autoplayVar != 0)) {
