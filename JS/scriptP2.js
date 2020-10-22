@@ -179,6 +179,19 @@ function shuffle() {
 	}
 }
 
+function  skipSong() {
+	colorToggle("skip_styling");
+	setTimeout(colorToggle("skip_styling"), 500);
+	if (autoplayVar == true && nowPlaying != undefined) {
+		audioLooper(nowPlaying + 1);
+	} else if (firstPlay == 0) {
+		initMp3Player(0);
+	} else if (nowPlaying < numSongs){
+		initMp3Player(nowPlaying + 1);
+	} else {
+		initMp3Player(0);
+	}
+}
 
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
@@ -419,6 +432,7 @@ function shufflePlaylist(array) {
 		array[counter] = array[index];
 		array[index] = temp;
 	}
+	console.log("Playlist shuffled");
 	return array;
 }
 
