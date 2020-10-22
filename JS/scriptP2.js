@@ -171,8 +171,10 @@ function shuffle() {
 			}	
 		}
 	} else {
-		shuffleVar = 1;
-		audioLooper(songArray[0]);
+		audio.onended = function () {
+			shuffleVar = 1;
+			audioLooper(songArray[0]);
+		}
 	}
 }
 
