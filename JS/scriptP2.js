@@ -253,6 +253,8 @@ function initMp3Player(input) {
 		audio.onended = function() {
 			if(document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 				document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#x23f5</button>';
+				audio.pause();
+				audio.currentTime = 0;
 			} else {
 				document.getElementById("time").innerHTML = "0:00";
 				initMp3Player(input);
