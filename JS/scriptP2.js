@@ -173,9 +173,7 @@ function shuffle() {
 
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
-	if (shuffleVar == 0 && shuffleVar == false == document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
-		break;
-	} else {
+	if (shuffleVar != 0 || autoplayVar != false) {
 		if (shuffleVar < 2 && counter <= numSongs) {
 			if(shuffleVar != 1) {
 				counter = songArray[counter];
