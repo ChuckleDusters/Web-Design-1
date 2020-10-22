@@ -148,12 +148,18 @@ function replaySong() {
 
 function shuffle() {
 	colorToggle("shuffle_styling");
-	shuffleVar = 0;
+	if (shuffleVar == 2 && document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
+		shuffleVar = 1;
+	} else {
+		shuffleVar = 0;
+	}
 	if (document.getElementById("replay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		colorToggle("replay_styling");
 	}
 	if (document.getElementById("shuffle_styling").style.backgroundColor != "rgb(255, 255, 255)") {
-		shuffleVar = 2;
+		if (shuffleVar != 1) {
+			shuffleVar = 2;
+		}
 		autoplayVar = true;
 		if (document.getElementById("autoplay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 			colorToggle("autoplay_styling");
