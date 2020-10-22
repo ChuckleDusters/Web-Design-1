@@ -171,7 +171,7 @@ function shuffle() {
 				audioLooper(songArray[0]);
 			}	
 		}
-	} else {
+	} else if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)") {
 		audio.onended = function () {
 			shuffleVar = 1;
 			audioLooper(nowPlaying);
