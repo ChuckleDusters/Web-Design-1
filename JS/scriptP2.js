@@ -166,7 +166,7 @@ function shuffle() {
 		audio.onended = function() {
 			if (shuffleVar == 2) {
 				audioLooper(1); //Old = songArray[1];
-			} else {
+			} else if (document.getElementById("autoplay_styling").style.backgroundColor != "rgb(255, 255, 255)"){
 				shuffleVar = 1;
 				audioLooper(songArray[0]);
 			}	
