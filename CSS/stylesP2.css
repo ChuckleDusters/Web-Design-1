@@ -70,8 +70,8 @@ body{
 #shuffle_autoplay {
 	z-index: 2;
 	position: relative;
-	bottom: 310px;
-    width: 213px;
+	bottom: 314px;
+    width: 311px;
     margin: 0 auto;
 }
 
@@ -134,7 +134,7 @@ linebreak {
 
 #moveup {
     position: relative;
-    bottom: 340px;
+    bottom: 320px;
     background-color: black;
     color:white;
 }

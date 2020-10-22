@@ -92,6 +92,8 @@ function initPage() {
 	
 	fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	
+	songArray = unshufflePlaylist(songArray);
+
 	frameLooper();
 }
 
@@ -181,7 +183,7 @@ function shuffle() {
 
 function  skipSong() {
 	colorToggle("skip_styling");
-	setTimeout(colorToggle("skip_styling"), 500);
+	setTimeout(function() {colorToggle("skip_styling")}, 250);
 	if (autoplayVar == true && nowPlaying != undefined) {
 		audioLooper(nowPlaying + 1);
 	} else if (firstPlay == 0) {
@@ -190,6 +192,32 @@ function  skipSong() {
 		initMp3Player(nowPlaying + 1);
 	} else {
 		initMp3Player(0);
+	}
+}
+
+function restartSong() {
+	colorToggle("restart_styling");
+	setTimeout(function() {colorToggle("restart_styling")}, 250);
+	if (audio.currentTime > audio.duration / 20) {
+		if (autoplayVar == true) {
+			audioLooper(nowPlaying);
+		} else {
+			initMp3Player(nowPlaying);
+		}
+	} else {
+		if (autoplayVar == true) {
+			if (nowPlaying != 0 && nowPlaying != null) {
+				audioLooper(nowPlaying - 1);
+			} else {
+				audioLooper(numSongs)
+			}
+		} else {
+			if (nowPlaying != 0 && nowPlaying != null) {
+				initMp3Player(nowPlaying - 1)
+			} else {
+				initMp3Player(numSongs);
+			}
+		}
 	}
 }
 
