@@ -4,7 +4,7 @@ var canvas, ctx, source, context, analyser, fbc_array, rads,
 	bars, bar_x, bar_y, bar_x_term, bar_y_term, bar_width,
 	bar_height, react_x, react_y, intensity, rot, firstPlay,
 	audio, pause, source, artist, title, isSeeking, artwork,
-	autoplayVar, shuffleVar;
+	autoplayVar, shuffleVar, nowPlaying;
 
 const numSongs = 5;
 var songArray = new Array(numSongs);
@@ -67,6 +67,7 @@ title = "Not Playing - Choose a Song!"
 firstPlay = 0;
 autoplayVar = false;
 shuffleVar = 0;
+nowPlaying = null;
 
 function initPage() {
 	canvas = document.getElementById("visualizer_render");
@@ -173,7 +174,7 @@ function shuffle() {
 	} else {
 		audio.onended = function () {
 			shuffleVar = 1;
-			audioLooper(songArray[0]);
+			audioLooper(nowPlaying);
 		}
 	}
 }
@@ -254,6 +255,7 @@ function initMp3Player(input) {
     pause = 0;
     firstPlay=1;
 	
+	nowPlaying = songs[input];
 	audio.play();
 	
 	document.getElementById("button_pause").innerHTML = '<button type="button" class="button" onclick="togglepause()" style="position: relative; right: 45px;">&#10074&#10074</button>';
