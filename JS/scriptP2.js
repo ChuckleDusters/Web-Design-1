@@ -179,7 +179,7 @@ function shuffle() {
 
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
-	if ((shuffleVar != 0 || autoplayVar != false) && (shuffleVar != 0 && autoplayVar != 0)) {
+	if ((shuffleVar != 0 || autoplayVar != false) || (shuffleVar != 0 && autoplayVar != 0)) {
 		if (shuffleVar == 2 && document.getElementById("shuffle_styling").style.backgroundColor == "rgb(255, 255, 255)") {
 			shuffleVar = 1;
 		}
