@@ -173,36 +173,40 @@ function shuffle() {
 
 function audioLooper(counter) {
 	console.log("Called audioLooper at counter = " + counter);
-	if (shuffleVar < 2 && counter <= numSongs) {
-		if(shuffleVar != 1) {
-			counter = songArray[counter];
-			console.log("Counter set to songArray[counter]: " + counter);
-		} else {
-			counter++;
-			shuffleVar = 0;
+	if (shuffleVar == 0 && shuffleVar == false == document.getElementById("replay_styling").style.backgroundColor == "rgb(255, 255, 255)") {
+		break;
+	} else {
+		if (shuffleVar < 2 && counter <= numSongs) {
+			if(shuffleVar != 1) {
+				counter = songArray[counter];
+				console.log("Counter set to songArray[counter]: " + counter);
+			} else {
+				counter++;
+				shuffleVar = 0;
+			}
+			songArray = unshufflePlaylist(songArray);
+			console.log("songArray unshuffle processed successfully!");
 		}
-		songArray = unshufflePlaylist(songArray);
-		console.log("songArray unshuffle processed successfully!");
-	}
-	if(counter <= numSongs) {
-		console.log("Playing Song at: " + songArray[counter]);
-		initMp3Player(songArray[counter]);
-		audio.onended = function() {
-			counter++;
-			console.log("Counter + 1 = " + counter);
+		if(counter <= numSongs) {
+			console.log("Playing Song at: " + songArray[counter]);
+			initMp3Player(songArray[counter]);
+			audio.onended = function() {
+				counter++;
+				console.log("Counter + 1 = " + counter);
+				audioLooper(counter);
+			}
+		}
+		else if (counter > numSongs && autoplayVar == true && shuffleVar < 2) {
+			console.log("Autoplay replay hit")
+			counter = 0;
 			audioLooper(counter);
 		}
-	}
-	else if (counter > numSongs && autoplayVar == true && shuffleVar < 2) {
-		console.log("Autoplay replay hit")
-		counter = 0;
-		audioLooper(counter);
-	}
-	else if(counter > numSongs && shuffleVar == 2) {
-		songArray = shufflePlaylist(songArray);
-		initMp3Player(songArray[0]);
-		audio.onended = function() {
-			audioLooper(songArray[0]);
+		else if(counter > numSongs && shuffleVar == 2) {
+			songArray = shufflePlaylist(songArray);
+			initMp3Player(songArray[0]);
+			audio.onended = function() {
+				audioLooper(songArray[0]);
+			}
 		}
 	}
 }
