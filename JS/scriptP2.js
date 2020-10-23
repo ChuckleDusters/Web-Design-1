@@ -184,39 +184,99 @@ function shuffle() {
 function  skipSong() {
 	colorToggle("skip_styling");
 	setTimeout(function() {colorToggle("skip_styling")}, 250);
-	if (autoplayVar == true && nowPlaying != undefined) {
-		audioLooper(nowPlaying + 1);
-	} else if (firstPlay == 0) {
-		initMp3Player(0);
-	} else if (nowPlaying < numSongs){
-		initMp3Player(nowPlaying + 1);
+	if (nowPlaying != null) {
+		var currentArrayVal;
+		for (var i = 0; i < numSongs; i++) {
+			if (songArray[i] == nowPlaying) {currentArrayVal = i}
+		}
+	}
+	if(autoplayVar == true) {
+		if(shuffleVar == 2) {
+			if (currentArrayVal < numSongs) {
+				audioLooper(currentArrayVal + 1);
+			} else {
+				audioLooper(0);
+			}
+			
+		} else {
+			audioLooper(nowPlaying + 1);
+		}
 	} else {
-		initMp3Player(0);
+		if (shuffleVar == 2) {
+			initMp3Player(currentArrayVal + 1);
+		} else if (firstPlay != 0) {
+			if (nowPlaying < numSongs) {
+				initMp3Player(nowPlaying + 1);
+			} else {
+				initMp3Player(0);
+			}
+		} else {
+			initMp3Player(0);
+		}
 	}
 }
 
 function restartSong() {
 	colorToggle("restart_styling");
 	setTimeout(function() {colorToggle("restart_styling")}, 250);
-	if (audio.currentTime > audio.duration / 20) {
-		if (autoplayVar == true) {
-			audioLooper(nowPlaying);
-		} else {
-			initMp3Player(nowPlaying);
+	if (nowPlaying != null) {
+		var currentArrayVal;
+		for (var i = 0; i <= numSongs; i++) {
+			if (songArray[i] == nowPlaying) {
+				currentArrayVal = i;
+			}
 		}
-	} else {
-		if (autoplayVar == true) {
-			if (nowPlaying != 0 && nowPlaying != null) {
-				audioLooper(nowPlaying - 1);
+	}
+	if(autoplayVar == true) {
+		if (shuffleVar == 2) {
+			if (firstPlay != 0) {
+				if (currentArrayVal > 0) {
+					console.log("CurrentArrayVal: " + currentArrayVal - 2);
+					audioLooper(currentArrayVal - 1);
+				} else {
+					console.log("CurrentArrayVal: " + currentArrayVal + " Looping at numSongs");
+					audioLooper(numSongs);
+				}
 			} else {
-				audioLooper(numSongs)
+				if (currentArrayVal == 0) {
+					audioLooper(currentArrayVal - 1);
+				} else {
+					audioLooper(numSongs - 1);
+				}
+			}
+		} else if (firstPlay != 0) {
+			if (nowPlaying < numSongs) {
+				if(nowPlaying != 0) {
+						audioLooper(nowPlaying - 1);
+				} else {
+					audioLooper(numSongs);
+				}
+			} else {
+				audioLooper(numSongs - 1);
 			}
 		} else {
-			if (nowPlaying != 0 && nowPlaying != null) {
-				initMp3Player(nowPlaying - 1)
+			audioLooper(numSongs);
+		}
+	} else {
+		if (shuffleVar == 2) {
+			if (currentArrayVal > 0) {
+				initMp3Player(currentArrayVal - 1);
 			} else {
 				initMp3Player(numSongs);
 			}
+			
+		} else if (firstPlay != 0) {
+			if (nowPlaying < numSongs) {
+				if(nowPlaying != 0) {
+					initMp3Player(nowPlaying - 1);
+				} else {
+					initMp3Player(numSongs);
+				}
+			} else {
+				initMp3Player(numSongs - 1);
+			}
+		} else {
+			initMp3Player(numSongs);
 		}
 	}
 }
@@ -289,7 +349,7 @@ function initMp3Player(input) {
 		document.getElementById("songname").innerHTML = "Not Playing - Choose a Song!";
 		artwork.src = null;
 		console.log(shuffleVar + " " + autoplayVar + " " + firstPlay);
-		if (firstPlay == 1) {
+		if (firstPlay == 0) {
 			autoplayVar = false;
 			shuffleVar = 0;
 			shuffle();
