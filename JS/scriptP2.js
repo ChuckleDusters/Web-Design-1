@@ -15,37 +15,43 @@ let songs = [
 		title:"Believer", 
 		artist:"Imagine Dragons", 
 		source:'../AUDIO/IDBeliever.mp3', 
-		art:'../IMAGES/IDBeliever.jpg'
+		art:'../IMAGES/IDBeliever.jpg',
+		color: "rgb(74, 57, 60)"
 	}, 
 	song2 = {
 		title:"Soothsayer", 
 		artist:"Buckethead", 
 		source:'../AUDIO/BSoothsayer.mp3', 
-		art:'../IMAGES/BSoothsayer.jpg'
+		art:'../IMAGES/BSoothsayer.jpg',
+		color: "rgb(35, 36, 33)"
 	},
 	song3 = {
 		title:"Bad Company", 
 		artist:"Five Finger Death Punch", 
 		source:'../AUDIO/5FDPBadCompany.mp3', 
-		art:'../IMAGES/5FDPBadCompany.jpg'
+		art:'../IMAGES/5FDPBadCompany.jpg',
+		color: "rgb(197, 84, 73)"
 	},
 	song4 = {
 		title:"Blue on Black", 
 		artist:"Five Finger Death Punch", 
 		source:'../AUDIO/5FDPBlueOnBlack.mp3', 
-		art:'../IMAGES/5FDPBlueOnBlack.jpg'
+		art:'../IMAGES/5FDPBlueOnBlack.jpg',
+		color: "rgb(65, 64, 66)"
 	},
 	song5 = {
 		title:"Wrong Side of Heaven", 
 		artist:"Five Finger Death Punch", 
 		source:'../AUDIO/5FDPWrongSideOfHeaven.mp3', 
-		art:'../IMAGES/5FDPWrongSideOfHeaven.jpg'
+		art:'../IMAGES/5FDPWrongSideOfHeaven.jpg',
+		color: "rgb(62, 38, 32)"
 	},
 	song6 = {
 		title:"Sound of Silence", 
 		artist:"Disturbed", 
 		source:'../AUDIO/DSoundOfSilence.mp3', 
-		art:'../IMAGES/DSoundOfSilence.jpg'
+		art:'../IMAGES/DSoundOfSilence.jpg',
+		color: "rgb(49, 45, 36)"
 	}
 
 ]
@@ -370,6 +376,7 @@ function initMp3Player(input) {
 	document.getElementById("artistname").innerHTML = "Artist: " + songs[input].artist;
 	document.getElementById("songname").innerHTML = "Title: " + songs[input].title;
 	artwork.src = songs[input].art;
+	document.getElementById("visualizer_render").style.backgroundImage = ("radial-gradient(ellipse, " + songs[input].color + "0%, black 70%, black 0%)");
 
 	console.log("shuffleVar = " + shuffleVar);
 	console.log("autoplayVar = " + autoplayVar);
