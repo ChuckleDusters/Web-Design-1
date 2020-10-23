@@ -26,8 +26,8 @@ let songs = [
 		source:'../AUDIO/BSoothsayer.mp3', 
 		art:'../IMAGES/BSoothsayer.jpg',
 		color: "rgb(35, 36, 33)",
-		bar1: "106",
-		bar2: "104"
+		bar1: 'fbc_array[i]).toString()',
+		bar2: 'fbc_array[i]).toString()'
 	},
 	song3 = {
 		title:"Bad Company", 
@@ -44,8 +44,8 @@ let songs = [
 		source:'../AUDIO/5FDPBlueOnBlack.mp3', 
 		art:'../IMAGES/5FDPBlueOnBlack.jpg',
 		color: "rgb(65, 64, 66)",
-		bar1: "61",
-		bar2: "128"
+		bar1: 'fbc_array[i]).toString()/2',
+		bar2: "150"
 	},
 	song5 = {
 		title:"Wrong Side of Heaven", 
@@ -62,8 +62,8 @@ let songs = [
 		source:'../AUDIO/DSoundOfSilence.mp3', 
 		art:'../IMAGES/DSoundOfSilence.jpg',
 		color: "rgb(49, 45, 36)",
-		bar1: "254",
-		bar2: "252"
+		bar1: 'fbc_array[i]).toString()',
+		bar2: 'fbc_array[i]).toString()'
 	},
 	songNull = {
 		title:"Not Playing - Choose a Song!", 
