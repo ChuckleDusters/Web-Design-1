@@ -16,42 +16,54 @@ let songs = [
 		artist:"Imagine Dragons", 
 		source:'../AUDIO/IDBeliever.mp3', 
 		art:'../IMAGES/IDBeliever.jpg',
-		color: "rgb(74, 57, 60)"
+		color: "rgb(74, 57, 60)",
+		bar1: "229",
+		bar2: "186"
 	}, 
 	song2 = {
 		title:"Soothsayer", 
 		artist:"Buckethead", 
 		source:'../AUDIO/BSoothsayer.mp3', 
 		art:'../IMAGES/BSoothsayer.jpg',
-		color: "rgb(35, 36, 33)"
+		color: "rgb(35, 36, 33)",
+		bar1: "106",
+		bar2: "104"
 	},
 	song3 = {
 		title:"Bad Company", 
 		artist:"Five Finger Death Punch", 
 		source:'../AUDIO/5FDPBadCompany.mp3', 
 		art:'../IMAGES/5FDPBadCompany.jpg',
-		color: "rgb(197, 84, 73)"
+		color: "rgb(49, 12, 12)",
+		bar1: "6",
+		bar2: "3"
 	},
 	song4 = {
 		title:"Blue on Black", 
 		artist:"Five Finger Death Punch", 
 		source:'../AUDIO/5FDPBlueOnBlack.mp3', 
 		art:'../IMAGES/5FDPBlueOnBlack.jpg',
-		color: "rgb(65, 64, 66)"
+		color: "rgb(65, 64, 66)",
+		bar1: "61",
+		bar2: "128"
 	},
 	song5 = {
 		title:"Wrong Side of Heaven", 
 		artist:"Five Finger Death Punch", 
 		source:'../AUDIO/5FDPWrongSideOfHeaven.mp3', 
 		art:'../IMAGES/5FDPWrongSideOfHeaven.jpg',
-		color: "rgb(62, 38, 32)"
+		color: "rgb(62, 38, 32)",
+		bar1: "154",
+		bar2: "0"
 	},
 	song6 = {
 		title:"Sound of Silence", 
 		artist:"Disturbed", 
 		source:'../AUDIO/DSoundOfSilence.mp3', 
 		art:'../IMAGES/DSoundOfSilence.jpg',
-		color: "rgb(49, 45, 36)"
+		color: "rgb(49, 45, 36)",
+		bar1: "254",
+		bar2: "252"
 	}
 
 ]
@@ -397,16 +409,6 @@ function initMp3Player(input) {
 function frameLooper() {
 	resize_canvas(); // for some reason i have to resize the canvas every update or else the framerate decreases over time
 			
-	//var grd = ctx.createLinearGradient(0, 0, 0, canvas.height);
-	//grd.addColorStop(0, "rgba(0, 150, 0, 1)");
-	//grd.addColorStop(1, "rgba(0, 0, 0, 1)");
-
-	//ctx.fillStyle = grd;
-	//ctx.fillRect(0, 0, canvas.width, canvas.height);
-	
-	//ctx.fillStyle = "rgba(255, 255, 255, " + (intensity * 0.0000125 - 0.4) + ")";
-	//ctx.fillRect(0, 0, canvas.width, canvas.height);
-		
 	rot = rot + intensity * 0.0000001;
 		
 	react_x = 0;
@@ -430,7 +432,7 @@ function frameLooper() {
 						
 		ctx.save();
 					
-		var lineColor = "rgb(" + (fbc_array[i]).toString() + ", " + 198 + ", " + 0 + ")";
+		var lineColor = "rgb(" + (fbc_array[i]).toString() + ", " + songs[nowPlaying].bar1 + ", " + songs[nowPlaying].bar2 + ")";
 						
 		ctx.strokeStyle = lineColor;
 		ctx.lineWidth = bar_width;
