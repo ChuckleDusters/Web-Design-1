@@ -64,6 +64,15 @@ let songs = [
 		color: "rgb(49, 45, 36)",
 		bar1: "254",
 		bar2: "252"
+	},
+	songNull = {
+		title:"Not Playing - Choose a Song!", 
+		artist:"Artist: None", 
+		source: null, 
+		art: null,
+		color: "rgb(0, 128, 0)",
+		bar1: "0",
+		bar2: "0"
 	}
 
 ]
@@ -431,8 +440,14 @@ function frameLooper() {
 		bar_y_term = center_y + Math.sin(rads * i + rot) * (radius + bar_height);
 						
 		ctx.save();
-					
-		var lineColor = "rgb(" + (fbc_array[i]).toString() + ", " + songs[nowPlaying].bar1 + ", " + songs[nowPlaying].bar2 + ")";
+				
+		if (nowPlaying != null) {
+			var colorCounter = nowPlaying;
+		} else {
+			var colorCounter = numSongs + 1;
+		}
+
+		var lineColor = "rgb(" + (fbc_array[i]).toString() + ", " + songs[colorCounter].bar1 + ", " + songs[colorCounter].bar2 + ")";
 						
 		ctx.strokeStyle = lineColor;
 		ctx.lineWidth = bar_width;
