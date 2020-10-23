@@ -433,7 +433,7 @@ function frameLooper() {
 			var colorCounter = numSongs + 1;
 		}
 
-		var lineColor = "rgb(" + (fbc_array[i]).toString() + ", " + 128 + ", " + 0 + ")";
+		var lineColor = "rgb(" + (fbc_array[i]).toString() + ", " + 180 + ", " + 0 + ")";
 						
 		ctx.strokeStyle = lineColor;
 		ctx.lineWidth = bar_width;
