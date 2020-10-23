@@ -16,63 +16,49 @@ let songs = [
 		artist:"Imagine Dragons", 
 		source:'../AUDIO/IDBeliever.mp3', 
 		art:'../IMAGES/IDBeliever.jpg',
-		color: "rgb(74, 57, 60)",
-		bar1: "229",
-		bar2: "186"
+		color: "rgb(74, 57, 60)"
 	}, 
 	song2 = {
 		title:"Soothsayer", 
 		artist:"Buckethead", 
 		source:'../AUDIO/BSoothsayer.mp3', 
 		art:'../IMAGES/BSoothsayer.jpg',
-		color: "rgb(35, 36, 33)",
-		bar1: 'fbc_array[i]).toString()',
-		bar2: 'fbc_array[i]).toString()'
+		color: "rgb(35, 36, 33)"
 	},
 	song3 = {
 		title:"Bad Company", 
 		artist:"Five Finger Death Punch", 
 		source:'../AUDIO/5FDPBadCompany.mp3', 
 		art:'../IMAGES/5FDPBadCompany.jpg',
-		color: "rgb(49, 12, 12)",
-		bar1: "6",
-		bar2: "3"
+		color: "rgb(49, 12, 12)"
 	},
 	song4 = {
 		title:"Blue on Black", 
 		artist:"Five Finger Death Punch", 
 		source:'../AUDIO/5FDPBlueOnBlack.mp3', 
 		art:'../IMAGES/5FDPBlueOnBlack.jpg',
-		color: "rgb(65, 64, 66)",
-		bar1: 'fbc_array[i]).toString()/2',
-		bar2: "150"
+		color: "rgb(65, 64, 66)"
 	},
 	song5 = {
 		title:"Wrong Side of Heaven", 
 		artist:"Five Finger Death Punch", 
 		source:'../AUDIO/5FDPWrongSideOfHeaven.mp3', 
 		art:'../IMAGES/5FDPWrongSideOfHeaven.jpg',
-		color: "rgb(62, 38, 32)",
-		bar1: "154",
-		bar2: "0"
+		color: "rgb(62, 38, 32)"
 	},
 	song6 = {
 		title:"Sound of Silence", 
 		artist:"Disturbed", 
 		source:'../AUDIO/DSoundOfSilence.mp3', 
 		art:'../IMAGES/DSoundOfSilence.jpg',
-		color: "rgb(49, 45, 36)",
-		bar1: 'fbc_array[i]).toString()',
-		bar2: 'fbc_array[i]).toString()'
+		color: "rgb(49, 45, 36)"
 	},
 	songNull = {
 		title:"Not Playing - Choose a Song!", 
 		artist:"Artist: None", 
 		source: null, 
 		art: null,
-		color: "rgb(0, 128, 0)",
-		bar1: "0",
-		bar2: "0"
+		color: "rgb(0, 128, 0)"
 	}
 
 ]
@@ -447,7 +433,7 @@ function frameLooper() {
 			var colorCounter = numSongs + 1;
 		}
 
-		var lineColor = "rgb(" + (fbc_array[i]).toString() + ", " + songs[colorCounter].bar1 + ", " + songs[colorCounter].bar2 + ")";
+		var lineColor = "rgb(" + (fbc_array[i]).toString() + ", " + 128 + ", " + 0 + ")";
 						
 		ctx.strokeStyle = lineColor;
 		ctx.lineWidth = bar_width;
