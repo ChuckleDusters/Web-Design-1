@@ -1,179 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="../CSS/stylesP2.css">
-    <link rel="stylesheet" href="../CSS/nav.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Project 2 - Media Player</title>
+  <link rel="stylesheet" href="../CSS/stylesP2.css">
+  <link rel="stylesheet" href="../CSS/nav.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Project 2 - Media Player</title>
 </head>
+
 <body class=scrollDisable>
-    <div class="topnav">
-        <a href="../index.html"><i class="fa fa-home"></i> Home</a>
-        <a href="Project1.html"><i class="fa fa-folder"></i> Project 1</a>
-        <a class="active" href="Project2.html"><i class="fa fa-folder"></i> Project 2</a>
+  <div class="topnav">
+    <a href="../index.html"><i class="fa fa-home"></i> Home</a>
+    <a href="Project1.html"><i class="fa fa-folder"></i> Project 1</a>
+    <a class="active" href="Project2.html"><i class="fa fa-folder"></i> Project 2</a>
+  </div>
+  <header class="learn">
+    <br>
+    <h3>This page is for Project 2 - DIY Media Player</h3>
+    <div class="popup" onclick="popupFunction()">[?]<span class="popuptext" id="myPopup">Creating my own Media
+        Player!</span></span></div>
+    <br><br>
+  </header>
+
+  <body onload="initPage()">
+    <canvas id="visualizer_render"
+      style="background-image: radial-gradient(ellipse, rgb(0, 128, 0) 0%, black 70%, black 0%)"></canvas>
+
+    <div id="image">
+      <img id="artwork" width="150" height="150">
     </div>
-    <header class="learn">
-        <br>
-        <h3>This page is for Project 2 - DIY Media Player</h3>
-        <div class="popup" onclick="popupFunction()">[?]<span class="popuptext" id="myPopup">Creating my own Media Player!</span></span></div>
-        <br><br>
-    </header>
-    <body onload="initPage()">
-		<canvas id="visualizer_render" style="background-image: radial-gradient(ellipse, rgb(0, 128, 0) 0%, black 70%, black 0%)"></canvas>
-			
-		<div id="image">
-			<img id="artwork" width="150" height="150">
-		</div>
-		
-		<div id="artisttitle">
-			<h1 id="artistname">Artist: None</h1>
-		</div>
-				
-		<div id="songtitle">
-				<h1 id="songname">Not Playing - Choose a Song!</h1>
-        </div>
-				<div id="button_pause">
-					<button
-						type="button"
-						class="button"
-						onclick="togglepause()"
-            style="position: relative; right: 45px;"
-					>&#x23f5</button>
-        </div>
-				
-				<div id="scrubber">
-					<input onmouseover="isSeeking = 1" onmouseout="isSeeking = 0" onclick="audio.currentTime = document.getElementById('audioTime').value * (audio.duration / 100);" type="range" id="audioTime" style="width:33.3vw">
-				</div>
-				
-				<div id="audioCurrentTime">
-					<h1 id="time" style="position: relative; left: 10px;"></h1>
-        </div>
 
-        <div id="button_replay">
-          <button
-            type="button"
-            class="button"
-            onclick="replaySong()"
-            style="position: relative; left: 85px; background-color: rgb(255, 255, 255); border-color: black;"
-            id="replay_styling"
-          >&orarr;</button>
-        </div>
-
-        <div id="shuffle_autoplay">
-          <button
-            type="button"
-            class="button"
-            onclick="restartSong()"
-            style="background-color: rgb(255, 255, 255); border-color: black;"
-            id="restart_styling"
-          ><i class="fa fa-fast-backward" aria-hidden="true"></i></button>
-          <button
-            type="button"
-            class="button"
-            onclick="autoplay()"
-            style="background-color: rgb(255, 255, 255); border-color: black;"
-            id="autoplay_styling"
-          >AUTOPLAY</button>
-          <button
-            type="button"
-            class="button"
-            onclick="shuffle()"
-            style="background-color: rgb(255, 255, 255); border-color: black;"
-            id="shuffle_styling"
-          >SHUFFLE</button>
-          <button
-            type="button"
-            class="button"
-            onclick="skipSong()"
-            style="background-color: rgb(255, 255, 255); border-color: black;"
-            id="skip_styling"
-          ><i class="fa fa-fast-forward" aria-hidden="true"></i></button>
-        </div>
-
-        </div>
-    <div>
-        <center>
-        <table id="moveup">
-            <tr>
-                <tr><td><br></td></tr>>
-                <td>______</td>
-                <td><div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="../IMAGES/IDBeliever.jpg" alt="Believer Album Cover">
-                    <div class="card-body">
-                      <h5 class="card-title">Believer</h5>
-                      <h5 class="card-title">Imagine Dragons</h5>
-                    </div>
-                    <div class="card-body">
-                      <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(0)">LISTEN</button>
-                    </div>
-                  </div></td>
-                  <td>__</td>
-                  <td><div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="../IMAGES/BSoothsayer.jpg" alt="Soothsayer Album Cover">
-                    <div class="card-body">
-                      <h5 class="card-title">Soothsayer</h5>
-                      <h5 class="card-title">Buckethead</h5>
-                    </div>
-                    <div class="card-body">
-                      <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(1)">LISTEN</button>
-                    </div>
-                  </div></td>
-                  <td>__</td>
-                  <td><div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="../IMAGES/5FDPBadCompany.jpg" alt="Bad Company Album Cover">
-                    <div class="card-body">
-                      <h5 class="card-title">Bad Company</h5>
-                      <h5 class="card-title">Five Finger Death Punch</h5>
-                    </div>
-                    <div class="card-body">
-                      <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(2)">LISTEN</button>
-                    </div>
-                  </div></td>
-                  <td>______</td>
-            </tr>
-            <tr><td><br></td></tr>>
-            <tr>
-                <td>______</td>
-                <td><div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="../IMAGES/5FDPBlueOnBlack.jpg" alt="Blue on Black Album Cover">
-                    <div class="card-body">
-                      <h5 class="card-title">Blue on Black</h5>
-                      <h5 class="card-title">Five Finger Death Punch</h5>
-                    </div>
-                    <div class="card-body">
-                      <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(3)">LISTEN</button>
-                    </div>
-                  </div></td>
-                  <td>__</td>
-                  <td><div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="../IMAGES/5FDPWrongSideOfHeaven.jpg" alt="Wrong Side of Heaven Album Cover">
-                    <div class="card-body">
-                      <h5 class="card-title">Wrong Side of Heaven</h5>
-                      <h5 class="card-title">Five Finger Death Punch</h5>
-                    </div>
-                    <div class="card-body">
-                      <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(4)">LISTEN</button>
-                    </div>
-                  </div></td>
-                  <td>__</td>
-                  <td><div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="../IMAGES/DSoundOfSilence.jpg" alt="Sound of Silence Album Cover">
-                    <div class="card-body">
-                      <h5 class="card-title">Sound of Silence</h5>
-                      <h5 class="card-title">Disturbed</h5>
-                    </div>
-                    <div class="card-body">
-                      <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(5)">LISTEN</button>
-                    </div>
-                  </div></td>
-                  <td>______</td>
-                  <tr><td><br></td></tr>>
-            </tr>
-        </table>
+    <div id="artisttitle">
+      <h1 id="artistname">Artist: None</h1>
     </div>
-    </body>
-</center>
-<script type="text/javascript" src="../JS/scriptP2.js"></script>
+
+    <div id="songtitle">
+      <h1 id="songname">Not Playing - Choose a Song!</h1>
+    </div>
+    <div id="button_pause">
+      <button type="button" class="button" onclick="togglepause()"
+        style="position: relative; right: 45px;">&#x23f5</button>
+    </div>
+
+    <div id="scrubber">
+      <input onmouseover="isSeeking = 1" onmouseout="isSeeking = 0"
+        onclick="audio.currentTime = document.getElementById('audioTime').value * (audio.duration / 100);" type="range"
+        id="audioTime" style="width:33.3vw">
+    </div>
+
+    <div id="audioCurrentTime">
+      <h1 id="time" style="position: relative; left: 10px;"></h1>
+    </div>
+
+    <div id="button_replay">
+      <button type="button" class="button" onclick="replaySong()"
+        style="position: relative; left: 85px; background-color: rgb(255, 255, 255); border-color: black;"
+        id="replay_styling">&orarr;</button>
+    </div>
+
+    <div id="shuffle_autoplay">
+      <button type="button" class="button" onclick="restartSong()"
+        style="background-color: rgb(255, 255, 255); border-color: black;" id="restart_styling"><i
+          class="fa fa-fast-backward" aria-hidden="true"></i></button>
+      <button type="button" class="button" onclick="autoplay()"
+        style="background-color: rgb(255, 255, 255); border-color: black;" id="autoplay_styling">AUTOPLAY</button>
+      <button type="button" class="button" onclick="shuffle()"
+        style="background-color: rgb(255, 255, 255); border-color: black;" id="shuffle_styling">SHUFFLE</button>
+      <button type="button" class="button" onclick="skipSong()"
+        style="background-color: rgb(255, 255, 255); border-color: black;" id="skip_styling"><i
+          class="fa fa-fast-forward" aria-hidden="true"></i></button>
+    </div>
+
+    </div>
+    <center>
+    <button type="button" id="chevLeft" onclick="subCarousel()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+    <button type="button" id="chevRight" onclick="addCarousel()"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    <div class="w3-content" style="width: 100%">
+      
+        <div id="moveup" class="mySlides">
+          <table>
+            <tr class="playlistTable">
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr class="playlistTable">
+              <td>______</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/IDBeliever.jpg" alt="Believer Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">Believer</h5>
+                    <h5 class="card-title">Imagine Dragons</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(0)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>__</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/BSoothsayer.jpg" alt="Soothsayer Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">Soothsayer</h5>
+                    <h5 class="card-title">Buckethead</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(1)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>__</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/5FDPBadCompany.jpg" alt="Bad Company Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">Bad Company</h5>
+                    <h5 class="card-title">Five Finger Death Punch</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(2)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>______</td>
+            <tr>
+              <td><br></td>
+            </tr>
+            </tr>
+            <tr class="playlistTable">
+              <td>______</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/5FDPBlueOnBlack.jpg" alt="Blue on Black Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">Blue on Black</h5>
+                    <h5 class="card-title">Five Finger Death Punch</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(3)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>__</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/5FDPWrongSideOfHeaven.jpg"
+                    alt="Wrong Side of Heaven Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">Wrong Side of Heaven</h5>
+                    <h5 class="card-title">Five Finger Death Punch</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(4)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>__</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/DSoundOfSilence.jpg" alt="Sound of Silence Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">Sound of Silence</h5>
+                    <h5 class="card-title">Disturbed</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(5)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>______</td>
+            <tr>
+              <td><br></td>
+            </tr>
+            </tr>
+          </table>
+        </div>
+        <div id="moveup" class="mySlides">
+          <table>
+            <tr class="playlistTable">
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr class="playlistTable">
+              <td>______</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/TDTribute.jpg" alt="Tribute Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">Tribute</h5>
+                    <h5 class="card-title">Tenacious D</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(6)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>__</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/ACDCForThoseAboutToRock.jpg" alt="For Those About to Rock Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">AC/DC</h5>
+                    <h5 class="card-title">For Those About to Rock</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(7)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>__</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/3DDWhenImGone.jpg" alt="When I'm Gone Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">When I'm Gone</h5>
+                    <h5 class="card-title">3 Doors Down</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(8)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>______</td>
+            <tr>
+              <td><br></td>
+            </tr>
+            </tr>
+            <tr class="playlistTable">
+              <td>______</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/3DDKryptonite.jpg" alt="Kryptonite Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">Kryptonite</h5>
+                    <h5 class="card-title">3 Doors Down</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(9)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>__</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/GNRSweetChildOMine.jpg"
+                    alt="Sweet Child O' Mine Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">Sweet Child O' Mine</h5>
+                    <h5 class="card-title">Guns N' Roses</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(10)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>__</td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="../IMAGES/KCarryOnWaywardSon.jpg" alt="Carry On Wayward Son Album Cover">
+                  <div class="card-body">
+                    <h5 class="card-title">Carry On Wayward Son</h5>
+                    <h5 class="card-title">Kansas</h5>
+                  </div>
+                  <div class="card-body">
+                    <button type="button" class="btn btn-outline-primary" onclick="initMp3Player(11)">LISTEN</button>
+                  </div>
+                </div>
+              </td>
+              <td>______</td>
+            <tr>
+              <td><br></td>
+            </tr>
+            </tr>
+          </table>
+        </div>
+      </center>
+    </div>
+  </body>
+  </center>
+  <script type="text/javascript" src="../JS/scriptP2.js"></script>
 </body>
+
 </html>

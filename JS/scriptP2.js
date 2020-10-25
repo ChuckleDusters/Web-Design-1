@@ -6,7 +6,7 @@ var canvas, ctx, source, context, analyser, fbc_array, rads,
 	audio, pause, source, artist, title, isSeeking, artwork,
 	autoplayVar, shuffleVar, nowPlaying;
 
-const numSongs = 5;
+const numSongs = 11;
 var songArray = new Array(numSongs);
 
 // Create song objects within an array
@@ -52,6 +52,48 @@ let songs = [
 		source:'../AUDIO/DSoundOfSilence.mp3', 
 		art:'../IMAGES/DSoundOfSilence.jpg',
 		color: "rgb(49, 45, 36)"
+	},
+	song7 = {
+		title: "Tribute",
+		artist: "Tenacious D",
+		source: '../AUDIO/TDTribute.mp3',
+		art: '../IMAGES/TDTribute.jpg',
+		color: "rgb(198, 191, 187)"
+	},
+	song8 = {
+		title: "For Those About to Rock",
+		artist: "AC/DC",
+		source: '../AUDIO/ACDCForThoseAboutToRock.mp3',
+		art: '../IMAGES/ACDCForThoseAboutToRock.jpg',
+		color: "rgb(150, 109, 78)"
+	},
+	song9 = {
+		title: "When I'm Gone",
+		artist: "3 Doors Down",
+		source: '../AUDIO/3DDWhenImGone.mp3',
+		art: '../IMAGES/3DDWhenImGone.jpg',
+		color: "	rgb(175, 59, 23)"
+	},
+	song10 = {
+		title: "Kryptonite",
+		artist: "3 Doors Down",
+		source: '../AUDIO/3DDKryptonite.mp3',
+		art: '../IMAGES/3DDKryptonite.jpg',
+		color: "rgb(26, 24, 20)"
+	},
+	song11 = {
+		title: "Sweet Child O' Mine",
+		artist: "Guns N' Roses",
+		source: '../AUDIO/GNRSweetChildOMine',
+		art: '../IMAGES/GNRSweetChildOMine',
+		color: "rgb(177, 24, 44)"
+	},
+	song12 = {
+		title: "Carry On Wayward Son",
+		artist: "Kansas",
+		source: '../AUDIO/KCarryOnWaywardSon',
+		art: '../IMAGES/KCarryOnWaywardSon',
+		color: "rgb(105, 128, 134)"
 	},
 	songNull = {
 		title:"Not Playing - Choose a Song!", 
@@ -108,6 +150,7 @@ function initPage() {
 	songArray = unshufflePlaylist(songArray);
 
 	frameLooper();
+	addCarousel();
 }
 
 function resize_canvas() {
@@ -540,4 +583,27 @@ function unshufflePlaylist(array) {
 		array[counter] = counter;
 	}
 	return array;
+}
+
+var slideIndex = 0;
+
+function addCarousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+	slideIndex++;
+    if (slideIndex > x.length) { slideIndex = 1 }
+    x[slideIndex - 1].style.display = "block";
+}
+function subCarousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+	slideIndex--;
+    if (slideIndex < 1) { slideIndex = x.length }
+    x[slideIndex - 1].style.display = "block";
 }
