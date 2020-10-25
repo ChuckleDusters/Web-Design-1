@@ -4,43 +4,274 @@
     background-color: darkgreen;
     color: white;
     border:2px solid black;
+    text-align: center !important;
 
 }
-#question{
-    position:relative;
-    cursor:pointer;
+body{
+	margin: 0;
+	padding: 0;
+	display: block;
+    overflow-x: hidden;
+    font-family: "Lato", sans-serif;
+    background-color: black !important;
 }
-#question:hover span{
-    display:block;
-}
-span{
-    background: none repeat scroll 0 0 #F8F8F8;
-    border: 5px solid #DFDFDF;
-    color: #717171;
-    font-size: 13px;
-    height: 45px;
-    letter-spacing: 1px;
-    line-height: 30px;
-    margin: 0 auto;
-    position: relative;
+
+.button {
+    background-color: white;
+    border:2px solid black;
+    border-radius: 8px;
+    color: black;
+    padding: 5px 10px;
     text-align: center;
-    text-transform: uppercase;
-    top: -80px;
-    left: -7px;
-    display:none;
-    padding:0 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
-span:after{
-    content:'';
-    position:absolute;
-    bottom:-10px;
-    width:10px;
-    height:10px;
-    border-bottom:5px solid #dfdfdf;
-    border-right:5px solid #dfdfdf;
-    background:#f8f8f8;
-    left:50%;
-    -moz-transform:rotate(45deg);
-    -webkit-transform:rotate(45deg);
-    transform:rotate(45deg);
+
+#title {
+	color: white;	
+	position: absolute;
+	bottom: -10px;
+	left: 10px;
+}
+
+#artisttitle {
+	color: white;
+	position: absolute;
+	top: 240px;
+	left: 170px;
+	font-size: 50%;
+}
+
+#songtitle {
+	color: white;
+	position: absolute;
+	top: 200px;
+	left: 170px;
+	font-size: 70%;
+}
+
+#button_replay {
+	z-index: 2;
+	position: relative;
+	bottom: 311px;
+    left: 67%;
+}
+
+#button_pause {
+	z-index: 2;
+	position: relative;
+	bottom: 185px;
+	left: 33.3%;
+}
+
+#shuffle_autoplay {
+	z-index: 2;
+	position: relative;
+	bottom: 314px;
+    width: 311px;
+    margin: 0 auto;
+}
+
+#scrubber {
+	z-index: 2;
+	position: relative;
+	bottom: 220px;
+	left: 33.3vw;
+}
+
+input[type=range]{
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 10px;
+    background: darkgrey;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: white;
+    margin-top: -4px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: grey;
+}
+
+#audioCurrentTime {
+	color: white;
+	position: relative;
+	bottom: 257px;
+	left: 67%;
+	font-size: 70%;
+}
+
+#visualizer_render {
+    background-image: radial-gradient(ellipse, rgb(0, 128, 0) 0%, black 70%, black 0%);
+}
+
+
+#moveup {
+    position: relative;
+    border: 2px solid white;
+    border-radius: 100px;
+    padding: 10px;
+    bottom: 280px;
+    width: 1300px;
+}
+
+.playlistTable {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    color: white;
+}
+
+td {
+    border-bottom:2px solid black !important;
+}
+
+.card {
+    background-color: rgb(0, 66, 0) !important;
+    border:2px solid white !important;
+    border-radius: 7px !important;
+}
+
+.list-group-item {
+    border:3px solid black !important;
+}
+.btn {
+    width: 200px !important;
+    height: 50px !important;
+    border:3px solid !important;
+    position: relative; 
+    left: 20px;
+    font-size: 26px !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    bottom: 15px;
+}
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: rgb(43, 43, 43);
+  color: #fff;
+  text-align: center;
+  border-radius: 7px;
+  padding: 9px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+  border:2px solid white;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+/* Hide scrollbars */
+.scrollDisable::-webkit-scrollbar {
+    display: none;
+  }
+  
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollDisable {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.mySlides {
+    display: none;
+}
+#chevLeft {
+    z-index: 5;
+    position: absolute;
+    margin-top: -279px;
+    left: 50%;
+    transform: translateX(-647px);
+    width: 154px;
+    height: 1088px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    background-color: rgb(0, 20, 0);
+    border-color: transparent;
+    border-right: 2px solid white;
+    color: white;
+    font-size: 100px;
+}
+#chevLeft:focus {
+    outline: none;
+    box-shadow: none;
+}
+#chevRight {
+    z-index: 5;
+    position: absolute;
+    margin-top: -279px;
+    left: 50%;
+    transform: translateX(494px);
+    width: 154px;
+    height: 1088px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    background-color: rgb(0, 20, 0);
+    border-color: transparent;
+    border-left: 2px solid white;
+    color: white;
+    font-size: 100px;
+}
+#chevRight:focus {
+    outline: none;
+    box-shadow: none;
 }
