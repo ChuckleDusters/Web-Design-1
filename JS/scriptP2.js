@@ -84,15 +84,15 @@ let songs = [
 	song11 = {
 		title: "Sweet Child O' Mine",
 		artist: "Guns N' Roses",
-		source: '../AUDIO/GNRSweetChildOMine',
-		art: '../IMAGES/GNRSweetChildOMine',
+		source: '../AUDIO/GNRSweetChildOMine.mp3',
+		art: '../IMAGES/GNRSweetChildOMine.jpg',
 		color: "rgb(177, 24, 44)"
 	},
 	song12 = {
 		title: "Carry On Wayward Son",
 		artist: "Kansas",
-		source: '../AUDIO/KCarryOnWaywardSon',
-		art: '../IMAGES/KCarryOnWaywardSon',
+		source: '../AUDIO/KCarryOnWaywardSon.mp3',
+		art: '../IMAGES/KCarryOnWaywardSon.jpg',
 		color: "rgb(105, 128, 134)"
 	},
 	songNull = {
