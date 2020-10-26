@@ -58,7 +58,7 @@ let songs = [
 		artist: "Tenacious D",
 		source: '../AUDIO/TDTribute.mp3',
 		art: '../IMAGES/TDTribute.jpg',
-		color: "rgb(198, 191, 187)"
+		color: "rgb(99, 96, 94)"
 	},
 	song8 = {
 		title: "For Those About to Rock",
@@ -72,7 +72,7 @@ let songs = [
 		artist: "3 Doors Down",
 		source: '../AUDIO/3DDWhenImGone.mp3',
 		art: '../IMAGES/3DDWhenImGone.jpg',
-		color: "	rgb(175, 59, 23)"
+		color: "	rgb(135, 47, 20)"
 	},
 	song10 = {
 		title: "Kryptonite",
@@ -86,14 +86,14 @@ let songs = [
 		artist: "Guns N' Roses",
 		source: '../AUDIO/GNRSweetChildOMine.mp3',
 		art: '../IMAGES/GNRSweetChildOMine.jpg',
-		color: "rgb(177, 24, 44)"
+		color: "rgb(112, 16, 27)"
 	},
 	song12 = {
 		title: "Carry On Wayward Son",
 		artist: "Kansas",
 		source: '../AUDIO/KCarryOnWaywardSon.mp3',
 		art: '../IMAGES/KCarryOnWaywardSon.jpg',
-		color: "rgb(105, 128, 134)"
+		color: "rgb(76, 92, 97)"
 	},
 	songNull = {
 		title:"Not Playing - Choose a Song!", 
@@ -610,4 +610,39 @@ function subCarousel() {
 	slideIndex--;
     if (slideIndex < 1) { slideIndex = x.length }
     x[slideIndex - 1].style.display = "block";
+}
+
+var slider = document.getElementById("myRange");
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+	audio.mute = false;
+	audio.volume = slider.value/100;
+	if (slider.value >= 66) {
+		document.getElementById("volume_control").innerHTML = '<i class="fa fa-volume-up" aria-hidden="true"></i>';
+	} else if (slider.value < 66 && slider.value > 33) {
+		document.getElementById("volume_control").innerHTML = '<i class="fa fa-volume-down" aria-hidden="true"></i>';
+	} else if (slider.value <= 33 && slider.value > 1) {
+		document.getElementById("volume_control").innerHTML = '<i class="fa fa-volume-off" aria-hidden="true"></i>';
+	} else if (slider.value == 1) {
+		document.getElementById("volume_control").innerHTML = '<i class="fas fa-volume-mute" aria-hidden="true"></i>';
+	}
+}
+
+function mute() {
+	if (audio.mute == true) {
+		audio.mute = false;
+		if (slider.value >= 66) {
+			document.getElementById("volume_control").innerHTML = '<i class="fa fa-volume-up" aria-hidden="true"></i>';
+		} else if (slider.value < 66 && slider.value > 33) {
+			document.getElementById("volume_control").innerHTML = '<i class="fa fa-volume-down" aria-hidden="true"></i>';
+		} else if (slider.value <= 33 && slider.value > 1) {
+			document.getElementById("volume_control").innerHTML = '<i class="fa fa-volume-off" aria-hidden="true"></i>';
+		} else if (slider.value == 1) {
+			document.getElementById("volume_control").innerHTML = '<i class="fas fa-volume-mute" aria-hidden="true"></i>';
+		}
+	} else {
+		audio.mute = true;
+		document.getElementById("volume_control").innerHTML = '<i class="fas fa-volume-mute" aria-hidden="true"></i>';
+	}
 }

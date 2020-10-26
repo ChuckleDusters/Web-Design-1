@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/84f456c0e5.js" crossorigin="anonymous"></script>
   <title>Project 2 - Media Player</title>
 </head>
 
@@ -39,6 +40,7 @@
     <div id="songtitle">
       <h1 id="songname">Not Playing - Choose a Song!</h1>
     </div>
+    <div>
     <div id="button_pause">
       <button type="button" class="button" onclick="togglepause()"
         style="position: relative; right: 45px;">&#x23f5</button>
@@ -58,19 +60,29 @@
       <button type="button" class="button" onclick="replaySong()"
         style="position: relative; left: 85px; background-color: rgb(255, 255, 255); border-color: black;"
         id="replay_styling">&orarr;</button>
+        <div class="hoverDiv"><button type="button" class="button" onclick="mute()" id="volume_control"><i class="fa fa-volume-up" aria-hidden="true"></i></button></div>
+        
+        <div class="slidecontainer">
+          <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
+        </div>
     </div>
+  </div>
+
+    
+ 
 
     <div id="shuffle_autoplay">
       <button type="button" class="button" onclick="restartSong()"
         style="background-color: rgb(255, 255, 255); border-color: black;" id="restart_styling"><i
           class="fa fa-fast-backward" aria-hidden="true"></i></button>
       <button type="button" class="button" onclick="autoplay()"
-        style="background-color: rgb(255, 255, 255); border-color: black;" id="autoplay_styling">AUTOPLAY</button>
+        style="background-color: rgb(255, 255, 255); border-color: black;" id="autoplay_styling"><i class="fa fa-play-circle" aria-hidden="true"></i>  AUTOPLAY</button>
       <button type="button" class="button" onclick="shuffle()"
-        style="background-color: rgb(255, 255, 255); border-color: black;" id="shuffle_styling">SHUFFLE</button>
+        style="background-color: rgb(255, 255, 255); border-color: black;" id="shuffle_styling"><i class="fa fa-random" aria-hidden="true"></i>  SHUFFLE</button>
       <button type="button" class="button" onclick="skipSong()"
         style="background-color: rgb(255, 255, 255); border-color: black;" id="skip_styling"><i
           class="fa fa-fast-forward" aria-hidden="true"></i></button>
+          
     </div>
 
     </div>
