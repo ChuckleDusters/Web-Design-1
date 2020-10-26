@@ -6,7 +6,7 @@ var canvas, ctx, source, context, analyser, fbc_array, rads,
 	audio, pause, source, artist, title, isSeeking, artwork,
 	autoplayVar, shuffleVar, nowPlaying;
 
-const numSongs = 11;
+const numSongs = 17;
 var songArray = new Array(numSongs);
 
 // Create song objects within an array
@@ -94,6 +94,48 @@ let songs = [
 		source: '../AUDIO/KCarryOnWaywardSon.mp3',
 		art: '../IMAGES/KCarryOnWaywardSon.jpg',
 		color: "rgb(76, 92, 97)"
+	},
+	song13 = {
+		title: "Blinding Lights",
+		artist: "The Weeknd",
+		source: '../AUDIO/TWBlindingLights.mp3',
+		art: '../IMAGES/TWBlindingLights.jpg',
+		color: "rgb(115, 68, 18)"
+	},
+	song14 = {
+		title: "XO",
+		artist: "The Eden Project",
+		source: '../AUDIO/TEPXO.mp3',
+		art: '../IMAGES/TEPXO.jpg',
+		color: "rgb(80, 80, 80)"
+	},
+	song15 = {
+		title: "Do I Wanna Know?",
+		artist: "Arctic Monkeys",
+		source: '../AUDIO/AMDoIWannaKnow.mp3',
+		art: '../IMAGES/AMDoIWannaKnow.jpg',
+		color: "rgb(46, 46, 46)"
+	},
+	song16 = {
+		title: "Roots",
+		artist: "Imagine Dragons",
+		source: '../AUDIO/IDRoots.mp3',
+		art: '../IMAGES/IDRoots.jpg',
+		color: "rgb(51, 40, 61)"
+	},
+	song17 = {
+		title: "Radioactive",
+		artist: "Imagine Dragons",
+		source: '../AUDIO/IDRadioactive.mp3',
+		art: '../IMAGES/IDRadioactive.jpg',
+		color: "rgb(140, 121, 86)"
+	},
+	song18 = {
+		title: "Thunder / Young Dumb & Broke",
+		artist: "Imagine Dragons, Khalid",
+		source: '../AUDIO/IDKThunderYoungDumbBroke.mp3',
+		art: '../IMAGES/IDKThunderYoungDumbBroke.jpg',
+		color: "rgb(45, 93, 109)"
 	},
 	songNull = {
 		title:"Not Playing - Choose a Song!", 
