@@ -630,7 +630,7 @@ slider.oninput = function() {
 
 function mute() {
 	if (audio.volume == 0) {
-		audio.volume = slider.value;
+		audio.volume = slider.value/100;
 		if (slider.value >= 66) {
 			document.getElementById("volume_control").innerHTML = '<i class="fa fa-volume-up" aria-hidden="true"></i>';
 		} else if (slider.value < 66 && slider.value > 33) {
