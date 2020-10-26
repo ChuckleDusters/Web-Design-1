@@ -616,7 +616,6 @@ var slider = document.getElementById("myRange");
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
-	audio.mute = false;
 	audio.volume = slider.value/100;
 	if (slider.value >= 66) {
 		document.getElementById("volume_control").innerHTML = '<i class="fa fa-volume-up" aria-hidden="true"></i>';
@@ -630,19 +629,17 @@ slider.oninput = function() {
 }
 
 function mute() {
-	if (audio.mute == true) {
-		audio.mute = false;
+	if (audio.volume == 0) {
+		audio.volume = slider.value;
 		if (slider.value >= 66) {
 			document.getElementById("volume_control").innerHTML = '<i class="fa fa-volume-up" aria-hidden="true"></i>';
 		} else if (slider.value < 66 && slider.value > 33) {
 			document.getElementById("volume_control").innerHTML = '<i class="fa fa-volume-down" aria-hidden="true"></i>';
 		} else if (slider.value <= 33 && slider.value > 1) {
 			document.getElementById("volume_control").innerHTML = '<i class="fa fa-volume-off" aria-hidden="true"></i>';
-		} else if (slider.value == 1) {
-			document.getElementById("volume_control").innerHTML = '<i class="fas fa-volume-mute" aria-hidden="true"></i>';
 		}
 	} else {
-		audio.mute = true;
+		audio.volume = 0;
 		document.getElementById("volume_control").innerHTML = '<i class="fas fa-volume-mute" aria-hidden="true"></i>';
 	}
 }
