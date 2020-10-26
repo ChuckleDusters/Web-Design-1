@@ -128,7 +128,7 @@ let songs = [
 		artist: "Imagine Dragons",
 		source: '../AUDIO/IDRadioactive.mp3',
 		art: '../IMAGES/IDRadioactive.jpg',
-		color: "rgb(140, 121, 86)"
+		color: "rgb(115, 100, 71)"
 	},
 	song18 = {
 		title: "Thunder / Young Dumb & Broke",
