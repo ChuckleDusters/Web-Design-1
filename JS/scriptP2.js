@@ -337,7 +337,7 @@ function restartSong() {
 			}
 		}
 	} else {
-		audio.currentTime = 0;
+		initMp3Player(nowPlaying);
 	}
 }
 
